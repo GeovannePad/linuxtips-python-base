@@ -38,3 +38,33 @@ __Programa:__ conjunto de instruções colocados de forma organizada em um ou ma
 - __Programas interpretados:__ aqueles que podem ser escritos em arquivos mas são avaliados linha a linha, bloco a bloco, sem a necessidade de o programa inteiro estar avaliado, cada instrução é lida e logo em seguida interpreta e executada, tornando mais fácil e mais dinâmica a programação, mas pode ser também mais suscetível a erros.
 
 __Python é uma linguagem dinâmica e interpretada.__
+
+### Como está organizada a plataforma Python
+
+__Python é uma plataforma formada por uma série de componentes.__
+
+__PLR - Python Language Reference__
+
+ - Documento contendo toda a especificação da linguagem, extenso conjunto de textos escrito pelo criador do Python.
+ - Regras gramaticais da linguagem.
+ - Palavras reservadas.
+ - Todos os comportamentos esperados de uma implementação de Python.
+
+__Implementação__
+
+__CPython__ - Implementação oficial escrita em linguagem C do Python
+
+A partir da PLR se cria uma implementação do Python, essa especificação é programada com o objetivo de interpretar e executar programas Python, como:
+- IronPython (.NET)
+- Jython (Java Virtual Machine)
+- PyPy (escrito em Python para ser mais rápido)
+- Stackless Python (CPython com suporte microthreads)
+- MicroPython (micro controllers)
+
+__Ecossistema__
+
+__Tudo em torno da linguagem Python__
+- Comunidades
+- PSF (Python Software Foundation)
+- Pacotes e ferramentas
+- pypi.org (Python Package Index), através da ferramenta `pip` que se instala os pacotes.
