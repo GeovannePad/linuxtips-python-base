@@ -68,3 +68,25 @@ __Tudo em torno da linguagem Python__
 - PSF (Python Software Foundation)
 - Pacotes e ferramentas
 - pypi.org (Python Package Index), através da ferramenta `pip` que se instala os pacotes.
+
+### Instalação do Python e preparação do ambiente
+
+__Executar comandos Python no terminal:__ `python -c "comando"`
+
+Python como uma entidade e você "conversa" com ele, sempre vai ter uma resposta.
+
+Valores que o Python compreende mas não sabe tomar uma ação são chamados de __literais__.
+
+
+`python -m site`, módulo que mostra como o Python que está sendo usado está instalado. Para executar outros módulos: `python -m nome_do_modulo`.
+`print(texto)`: imprime algo na tela
+`upper()`: transforma o texto em maiúsculo
+`python --version`: mostra versão instalada do Python
+`python -VV`: mostra a versão instalada e o momento em que o Python foi compilado.
+`python --help`: mostra a guia de ajuda.
+`python`: terminal interativo do Python (interpretador).
+`python -m turtledemo`, pacote gráfico com exemplos
+
+No interpretador Python, ele sempre vai imprimir os comandos inseridos.
+
+__REPL - read-eval-print loop__ (laço de leitura, execução e impressão)
