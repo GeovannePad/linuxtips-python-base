@@ -90,3 +90,12 @@ Valores que o Python compreende mas não sabe tomar uma ação são chamados de 
 No interpretador Python, ele sempre vai imprimir os comandos inseridos.
 
 __REPL - read-eval-print loop__ (laço de leitura, execução e impressão)
+
+### Introdução ao git e seu primeiro script Python
+
+__Script Python é um arquivo aonde se tem comandos__, cada linha para o interpretador é entendido como um comando diferente. Arquivo isolado que pode ser executado isoladamente.
+
+- __Shebang (ambientes Linux):__ comentário especial, sempre na primeira linha, usado para especificar um interpretador específico para o progrmama.
+
+`which python`: mostra o caminho do python que o sistema está usando.
+`mv nome_arquivo nome_novo`: renomeia um arquivo
