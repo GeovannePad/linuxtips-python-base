@@ -122,3 +122,27 @@ Manter 80 colunas por linha, uma boa prática.
 
 __Built-in:__ algo que já vem imbutido na linguagem.
 __Biblioteca padrão:__ tudo aquilo que já vem instalado por padrão no Python.
+
+### Tipos de instruções: expressions, statements, assignment
+
+Tipos de instruções que podem ser passadas para o interpretador do Python.
+
+- __Expression/Expressão:__ instrução que espera um valor de retorno. Exemplo: 1 + 1
+- __Statement/Declaração:__ instrução que prepara o interpretador para uma determinada tarefa mas não retorna valor, normalmente acompanhado de uma expressão. Exemplo: if, else, for, while, pass
+- __Assignment/Atribuição:__ intrução que pega o retorno de uma expressão e processa o seu valor com intuito de armazenar. Exemplo: soma = 40 + 2, soma += 3
+
+__Protocolo:__ o que o objeto é capaz de fazer.
+
+__A precedência de operadores no Python__
+
+Além da precedência de operadores aritméticos PEMDAS também existe a tabela de precedência de operadores da própria linguagem:
+
+|   __Nível__  |   __Categoria__   |   __Operadores__   |
+|:--------:|:-------------:|:---------------:|
+|  7(alto) | Exponenciação |        **       |
+|     6    | Multiplicação |     *,/,//,%    |
+|     5    |     Adição    |       +,-       |
+|     4    |   Relacional  | ==,!=,<=,>=,>,< |
+|     3    |     Lógico    |       not       |
+|     2    |     Lógico    |       and       |
+| 1(baixo) |     Lógico    |        or       |
