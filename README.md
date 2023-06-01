@@ -146,3 +146,15 @@ Além da precedência de operadores aritméticos PEMDAS também existe a tabela 
 |     3    |     Lógico    |       not       |
 |     2    |     Lógico    |       and       |
 | 1(baixo) |     Lógico    |        or       |
+
+### Bloco de código e identação
+
+Linguagem fácil de ser entendida por pessoas que não são programadores.
+
+Tarefa: fazer compras
+Lista de compras, categorias/blocos
+
+__Blocos de código lógicos:__ possui um escopo definido.
+Os ":" inidica um início de um bloco de código, sendo o recúo obrigatório.
+
+__Identação:__ termo usado para a formatação da lista de compras por exemplo, após cada categoria ou seção colocamos um recuo antes de começar o conteúdo.
