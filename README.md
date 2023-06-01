@@ -158,3 +158,24 @@ __Blocos de código lógicos:__ possui um escopo definido.
 Os ":" inidica um início de um bloco de código, sendo o recúo obrigatório.
 
 __Identação:__ termo usado para a formatação da lista de compras por exemplo, após cada categoria ou seção colocamos um recuo antes de começar o conteúdo.
+
+### Ambientes virtuais e ferramenta iPython
+
+__Ambiente real:__ ambiente onde se encontra o Python do sistema operacional.
+
+__Ambientes virtuais__
+
+- É uma sandbox, é uma cópia de todo o ambiente Python.
+- Garante que as dependências e o programa como um todo funcione de forma igual e correta em qualquer computador, evitando conflitos e danos. Cada projeto terá um ambiente virtual.
+
+__Convenção Linux:__ Todo arquivo/pasta que tem um ponto no início é um arquivo/pasta oculto.
+
+`python3.11 -m venv nome_ambiente_virtual`: comando para criar um ambiente virtual. 
+`source .venv/bin/activate`: comando para ativar um ambiente virtual no Linux bash.
+`deactivate`: comando para sair do ambiente virtual
+
+__Pip:__ busca pacotes em repositórios para ser instalado no Python. Busca em pypi.org
+
+__iPython:__ interpretador Python com mais ferramentas e colorido.
+
+`%time função`: comando do iPython que demonstra o uso do CPU para executar determinada função.
