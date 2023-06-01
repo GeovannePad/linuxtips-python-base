@@ -79,8 +79,6 @@ Valores que o Python compreende mas não sabe tomar uma ação são chamados de 
 
 
 `python -m site`, módulo que mostra como o Python que está sendo usado está instalado. Para executar outros módulos: `python -m nome_do_modulo`.
-`print(texto)`: imprime algo na tela
-`upper()`: transforma o texto em maiúsculo
 `python --version`: mostra versão instalada do Python
 `python -VV`: mostra a versão instalada e o momento em que o Python foi compilado.
 `python --help`: mostra a guia de ajuda.
@@ -99,3 +97,28 @@ __Script Python é um arquivo aonde se tem comandos__, cada linha para o interpr
 
 `which python`: mostra o caminho do python que o sistema está usando.
 `mv nome_arquivo nome_novo`: renomeia um arquivo
+
+### Criando um programa que lê variáveis de ambiente
+
+`env`: mostra a lista de todas as variáveis do ambiente.
+`env | grep variavel_ambiente`: grep é uma ferramenta de filtragem do linux.
+`export variavel_ambiente`: altera o valor de uma variável de ambiente.
+`unset variavel_ambiente`: exclui uma variável de ambiente.
+`variavel_ambiente script`: força um script a atualizar um determinado valor de uma determinada variável de ambiente.
+
+__Variáveis de Ambiente__
+
+Termo usado para referir ao local onde o programa é executado, o ambiente em termos gerais é formado por um shell que pode ser entendido como um local isolado onde o seu programa executa.
+Neste ambiente existem variáveis que servem para configurar o comportamento do próprio ambiente, do sistema e dos programas que rodam.
+
+__Condicionais:__ define um teste e sempre se usa junto com uma expressão de comparação.
+
+__Guia de estilo do python:__ pep8.org
+
+Manter 80 colunas por linha, uma boa prática.
+
+- __Snake case =__ current_language
+- __Pascal Case =__ CurrentLanguage
+
+__Built-in:__ algo que já vem imbutido na linguagem.
+__Biblioteca padrão:__ tudo aquilo que já vem instalado por padrão no Python.
