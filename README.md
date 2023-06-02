@@ -199,7 +199,7 @@ Através do tipo que é possível converter um dado em uma informação.
 
 __Tipos de dados primários (Scalar Types)__
 
-__Representa um único valor.__ Exemplo: `numero = 65`, um número inteiro.
+__Utilizados para armazenar uma única unidade de informação como por exemplo um número ou um texto__ Exemplo: `numero = 65`, um número inteiro.
 
 `int(valor)`: força a um valor a ser do tipo inteiro.
 
