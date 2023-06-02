@@ -179,3 +179,38 @@ __Pip:__ busca pacotes em repositórios para ser instalado no Python. Busca em p
 __iPython:__ interpretador Python com mais ferramentas e colorido.
 
 `%time função`: comando do iPython que demonstra o uso do CPU para executar determinada função.
+
+## Tipos de dados e protocolos - Day 2
+
+### A importância dos tipos de dados e o tipo inteiro
+
+Classe, categoria e tipo são as mesmas coisas. Apesar de terem suas diferenças. 
+
+`bin(numero_inteiro)`: função que mostra a versão binária de determinado número inteiro.
+`chr(numero_inteiro)`: função que retorna um caractere referente a um número inteiro.
+`id(variavel)`: função que retorna a posição na memória RAM de uma determinada variável.
+`type(variavel)`: função que retorna o tipo de dado de uma variável.
+
+__Todo objeto do Python possui as mesmas características__, um objeto contém um endereço de memória, que contém um tipo/classe/categoria e um valor.
+
+__Através do tipo de dado que o Python consegue saber qual informação você quer__, sendo um número, uma letra ou outras coisas.
+
+Através do tipo que é possível converter um dado em uma informação.
+
+__Tipos de dados primários (Scalar Types)__
+
+__Representa um único valor.__ Exemplo: `numero = 65`, um número inteiro.
+
+`int(valor)`: força a um valor a ser do tipo inteiro.
+
+`dir(tipo_de_dado)`: função que retorna a implementação do objeto, tudo que é possível ser feito com objetido de um determinado tipo de dado.
+
+- __Métodos públicos:__ métodos que não possuem dunder, podem ser usados diretamente.
+- __Protocolos:__ métodos dunder/especiais, determina uma operação que um objeto dentro de um tipo de dado pode tomar, só o Python deve usar, nós devemos usar abstrações que por baixo chamaram esses métodos, exemplos:
+
+`__add__()`: implementa o protocolo de adição, sendo um objeto Aditivel. Exemplo: `numero.__add__(1) = numero + 1`.
+`__sub__()`: implementa o protocolo de subtração, sendo um objeto redutivel. Exemplo: `numero.__sub__(1) = numero - 1`.
+`__mul__()`: implementa o protocolo de multiplicação, sendo um objeto multiplicável. Exemplo: `numero.__mul__(2) = numero * 2`.
+`__eq__()`: implementa o protocolo de equilidade. Exemplo: `numero.__eq__(2) = numero == 2`.
+
+- __Tipo inteiro:__ armazena os números inteiros em Python e é representado pela classe int.
