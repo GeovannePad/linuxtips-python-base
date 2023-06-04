@@ -214,3 +214,28 @@ __Utilizados para armazenar uma única unidade de informação como por exemplo 
 `__eq__()`: implementa o protocolo de equilidade. Exemplo: `numero.__eq__(2) = numero == 2`.
 
 - __Tipo inteiro:__ armazena os números inteiros em Python e é representado pela classe int.
+
+### Tipos de dados primitivos float, Bool, NoneType
+
+__Tipo de dado Float__
+
+Armazena um valor fracionado, resultados de divisões, um ponto flutuante. Exemplo: `valor = 5 / 2`.
+
+Para trabalhar com valores monetários, em uma aplicação de verdade, usa o tipo de dado Decimal ou Currency.
+
+__Tipo de dado Booleanos__
+
+- __Armazena um valor True (verdade, 1) ou False (falso, 0).__ Serve para criação de flags.
+- O if só trabalha com valores Booleanos.
+- Qualquer número diferente de 0 ou texto não vazio é considerado True para o Python.
+- Usado para apresentar uma sintaxe mais bonita. Mas por baixo o Python interpreta 0 como False e 1 como True.
+
+__Tipo de dado NoneType__
+
+- __Possui apenas uma única opção de valor, "None", significa nulo, ausência de valor.__
+- Usado para criar uma variável que não se sabe o valor. Possui um endereçamento de memória e um tipo. O valor da variável pode ser redefinido.
+- __NoneType é um objeto Singleton__, durante toda a execução do código, só pode ser criado apenas uma única vez, só pode existir apenas um único objeto.
+- Uma função que não tem um retorno explícito sempre irá retornar um valor NoneType.
+
+O próprio Range é um tipo de dado, ele gera um tipo de dado.
+__Protocolo Iterable (percorrível)__, pode percorrer cada um dos seus itens e realizar uma operação. For = Para.
