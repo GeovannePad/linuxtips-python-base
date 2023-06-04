@@ -219,9 +219,9 @@ __Utilizados para armazenar uma única unidade de informação como por exemplo 
 
 __Tipo de dado Float__
 
-Armazena um valor fracionado, resultados de divisões, um ponto flutuante. Exemplo: `valor = 5 / 2`.
-A presença de um ponto (".") faz que o Python entenda esse número como um Float.
-Para trabalhar com valores monetários, em uma aplicação de verdade, usa o tipo de dado Decimal ou Currency.
+- Armazena um valor fracionado, além da parte inteira também armazena o ponto flutuante, a fração, como resultados de divisões. Exemplo: `valor = 5 / 2`.
+- A presença de um ponto (".") faz que o Python entenda esse número como um Float.
+- Para trabalhar com valores monetários, em uma aplicação de verdade, usa o tipo de dado Decimal ou Currency.
 
 __Tipo de dado Booleanos__
 
@@ -239,3 +239,40 @@ __Tipo de dado NoneType__
 
 O próprio Range é um tipo de dado, ele gera um tipo de dado.
 __Protocolo Iterable (percorrível)__, pode percorrer cada um dos seus itens e realizar uma operação. For = Para.
+
+# Textos, Caracteres, Encoding e Strings
+
+- Bytes para Inteiro e Inteiro para Caractere.
+- Tipo entre o tipo primário e o tipo composto
+- Quando se está armazenando cada uma das letras com seus respectivos butes e sequência posicional em um único objeto, temos o que se chama de __Byte Array, no caso do Python se chama String.__
+
+__ASCII (American Standard Code for Information Interchange)__ é uma tabela Americana, e por limitação de memória ela só tem 128 (0-127) posições. Deixa de fora muitos caracteres especiais de outras linguas.
+
+__Unicode (Universal Code)__ tabela onde vai existir todos os caracteres existentes. unicode.org
+
+O Python permite imprimir diretamente um caractere na tela.
+
+__Tabela UTF8:__ tabela Unicode que possui 8 bytes para cada posição. Existem caracteres que ocupam mais de 8 bytes.
+
+__Em Python, números começados com "0b" são binários e "0x" são hexadecimais.__
+
+__Serialização__
+
+Usado para converter um caractere Unicode para uma String de caracteres mais simples, como Hexadecimais, usado para trafegar dados ou armazenar dados.
+
+`variavel.encode("utf-8")`: retorna um objeto do tipo bytes, onde separado por cada "\" terá um byte formando uma série de bytes que representa um caractere Unicode.
+`variavel.decode()`: converte a série de bytes para um caractere Unicode.
+`bytes(variavel, "utf-8")`: converte um texto para uma sequência de bytes usando uma tabela específica para buscar o texto.
+
+__Sliceable:__ habilidade de ser fatiado. Método `__getitem__()`.
+`len()`: retorna a quantidade de itens dentro de um objeto composto. Método `__len__()`.
+`next()`: retorna o próximo item de um objeto composto.
+`upper()`: transforma todos os caracteres em maiúsculos.
+`lower()`: transforma todos os caracteres em minúsculos.
+`capitalize()`: transforma a primeira letra da String em maiúscula.
+`title()`: transforma todas as primeiras letras de cada palavra da String em maiúscula.
+`split()`: divide um texto em uma lista separadas onde cada espaço é uma palavra.
+`startswith("letra")`: verifica se o texto começa com determinada letra, retorna true ou false.
+`endswith("letra")`: verifica se determina letra está no final do text, retorna true ou false.
+`sorted()`: retorna a ordenação de uma string baseada em uma tabela ASCII.
+`reversed()`: retorna uma string ao contrário.
