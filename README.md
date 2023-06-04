@@ -220,7 +220,7 @@ __Utilizados para armazenar uma única unidade de informação como por exemplo 
 __Tipo de dado Float__
 
 Armazena um valor fracionado, resultados de divisões, um ponto flutuante. Exemplo: `valor = 5 / 2`.
-
+A presença de um ponto (".") faz que o Python entenda esse número como um Float.
 Para trabalhar com valores monetários, em uma aplicação de verdade, usa o tipo de dado Decimal ou Currency.
 
 __Tipo de dado Booleanos__
