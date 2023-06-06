@@ -182,7 +182,9 @@ __iPython:__ interpretador Python com mais ferramentas e colorido.
 
 ## Tipos de dados e protocolos - Day 2
 
-### A importância dos tipos de dados e o tipo inteiro
+### A importância dos tipos de dados e os tipos de dados primitivos
+
+#### Tipo de dado Inteiro
 
 Classe, categoria e tipo são as mesmas coisas. Apesar de terem suas diferenças. 
 
@@ -215,7 +217,7 @@ __Utilizados para armazenar uma única unidade de informação como por exemplo 
 
 - __Tipo inteiro:__ armazena os números inteiros em Python e é representado pela classe int.
 
-### Tipos de dados primitivos float, Bool, NoneType
+#### Tipos de dados float, Bool, NoneType
 
 __Tipo de dado Float__
 
@@ -240,7 +242,7 @@ __Tipo de dado NoneType__
 O próprio Range é um tipo de dado, ele gera um tipo de dado.
 __Protocolo Iterable (percorrível)__, pode percorrer cada um dos seus itens e realizar uma operação. For = Para.
 
-# Textos, Caracteres, Encoding e Strings
+### Textos, Caracteres, Encoding e Strings
 
 - Bytes para Inteiro e Inteiro para Caractere.
 - Tipo entre o tipo primário e o tipo composto
@@ -276,3 +278,77 @@ __Sliceable:__ habilidade de ser fatiado. Método `__getitem__()`.
 `endswith("letra")`: verifica se determina letra está no final do text, retorna true ou false.
 `sorted()`: retorna a ordenação de uma string baseada em uma tabela ASCII.
 `reversed()`: retorna uma string ao contrário.
+
+### Formatação de textos
+
+__Concatenação__
+
+- __Junção de duas Strings em uma.__ Exemplo: `"Geovanne" + "Padilha"`.
+- __Tipagem dinâmica, mas tipagem forte__, necessita garantir que os tipos de dados são compatíveis.
+- Usada na biblioteca logging do Python.
+
+`str(variavel)`: converte uma variável para String.
+
+Se tem poucos textos, um texto no começo e um no final, é um bom caso para se utilizar concatenação, mas quando se tem mais blocos de Strings, é bom usar a interpolação.
+
+__Interpolação (Old Style)__
+
+- __Uso de template__, que vai conter o texto e os placeholder, para ser substituido por dado em uma variável. Exemplo:
+
+`template = "Olá, %s seu saldo é de %f"`.
+
+Para substituir no template usa: `template % (variavel, variavel)`. Os dados sempre inseridos na ordem da esquerda para direita no template.
+
+__Tipos de placeholder__
+
+`%s`: local para ser substituido por um texto, uma String. 
+`%d`: local para ser substituido por um dígito, um Int.
+`%03d`: um dígito sendo exibido com 3 casas decimais.
+`%f`: local para ser substituido por um ponto flutuante, um Float.
+`%.2f`: ponto flutuante com duas casas decimais.
+
+Pode ser passado diretamente: `"Olá %s" % "Geovanne"`.
+Informações sobre formatações no Python: pyformat.info
+
+`%(nome)s`: atribuindo um nome para um placeholder.
+
+__Para passar um valor para um placeholder com nome se usa um dicionário.__ Exemplo: `template = {"nome": nome}`
+
+__String Format (New Style)__
+
+- Usa uma String como um template e substitui as informações na String.
+- Usado em mensagens longas.
+
+Em vez da "%" usa as "{}". Exemplo: `msg = "Olá, {} você é o player n {} e você tem {} pontos`.
+
+Para atribuir os valores aos placeholders: `msg.format("Bruno", 2, 987.3)`.
+
+`{:03d}`: específica que é um número inteiro com 3 casas.
+`{:.3f}`: específica que é um número de ponto flutuante com 3 casas depois da vírgula.
+`{:^11}`: centraliza o texto em um total de 11 caracteres.
+`{:<20}`: coloca 20 espaços em branco no total e o texto alinhado a esquerda.
+`{:>20}`: coloca 20 espaços em branco no total e o texto alinhado a direita.
+`{:-^11}`: preenche os 11 espaços em branco com traços.
+`{:#^20.3}`: preenche os espaços em branco com "#", centraliza em 20 caracteres no total e corta 3 caracteres do texto.
+
+Também é possível colocar nomes para os placeholders. Exemplo: `{nome}`.
+Para atribuir os valores aos placeholders com nomes: `template.format(nome="Bruno")`.
+
+__F-Strings - Um String Format melhorado__
+
+- Usada para qualquer mensagem, print, erros etc.
+
+Exemplo: `f"Olá {nome} você tem {saldo:.2f}"`
+
+__Toda f-string criada deve ter variáveis existentes associadas.__
+Toda formatação no F-Strings funciona do mesmo jeito que no String Format.
+
+__Utilizando emojis__
+
+`print("\U0001F43C")`: imprime um emoji com base no seu código Unicode.
+`print("\N{panda face})`: imprime um emojo com base no seu nome na tabela Unicode.
+
+Dentro do bloco de f-string pode ser realizado algumas operações, como: `{n1 * n2}`.
+
+`\n`: quebra de linha no Python
+
