@@ -28,7 +28,7 @@ Uma linguagem de alto nível é convertida para o nível médio e depois então 
 
 __Linguagens compiladas:__ escreve o programa e o programa precisa estar todo correto do início ao fim. O compilador junta toda a lógica e forma um tipo "pacote" para executar o software. (simplificado)
 
-__Linguagens interpretadas:__ cada comando/linha é interpretado de forma individual. 
+__Linguagens interpretadas:__ cada comando/linha é interpretado de forma individual.
 
 __O código compilado para funcionar em diferentes sistemas operacionais é necessário compilar um pacote para cada sistema.__ Já o __código interpretado geralmente é multi plataforma pois ele é interpretado na hora que é executado.__
 
@@ -45,16 +45,17 @@ __Python é uma plataforma formada por uma série de componentes.__
 
 __PLR - Python Language Reference__
 
- - Documento contendo toda a especificação da linguagem, extenso conjunto de textos escrito pelo criador do Python.
- - Regras gramaticais da linguagem.
- - Palavras reservadas.
- - Todos os comportamentos esperados de uma implementação de Python.
+- Documento contendo toda a especificação da linguagem, extenso conjunto de textos escrito pelo criador do Python.
+- Regras gramaticais da linguagem.
+- Palavras reservadas.
+- Todos os comportamentos esperados de uma implementação de Python.
 
 __Implementação__
 
 __CPython__ - Implementação oficial escrita em linguagem C do Python
 
 A partir da PLR se cria uma implementação do Python, essa especificação é programada com o objetivo de interpretar e executar programas Python, como:
+
 - IronPython (.NET)
 - Jython (Java Virtual Machine)
 - PyPy (escrito em Python para ser mais rápido)
@@ -64,6 +65,7 @@ A partir da PLR se cria uma implementação do Python, essa especificação é p
 __Ecossistema__
 
 __Tudo em torno da linguagem Python__
+
 - Comunidades
 - PSF (Python Software Foundation)
 - Pacotes e ferramentas
@@ -76,7 +78,6 @@ __Executar comandos Python no terminal:__ `python -c "comando"`
 Python como uma entidade e você "conversa" com ele, sempre vai ter uma resposta.
 
 Valores que o Python compreende mas não sabe tomar uma ação são chamados de __literais__.
-
 
 `python -m site`, módulo que mostra como o Python que está sendo usado está instalado. Para executar outros módulos: `python -m nome_do_modulo`.
 `python --version`: mostra versão instalada do Python
@@ -170,7 +171,7 @@ __Ambientes virtuais__
 
 __Convenção Linux:__ Todo arquivo/pasta que tem um ponto no início é um arquivo/pasta oculto.
 
-`python3.11 -m venv nome_ambiente_virtual`: comando para criar um ambiente virtual. 
+`python3.11 -m venv nome_ambiente_virtual`: comando para criar um ambiente virtual.
 `source .venv/bin/activate`: comando para ativar um ambiente virtual no Linux bash.
 `deactivate`: comando para sair do ambiente virtual
 
@@ -186,7 +187,7 @@ __iPython:__ interpretador Python com mais ferramentas e colorido.
 
 #### Tipo de dado Inteiro
 
-Classe, categoria e tipo são as mesmas coisas. Apesar de terem suas diferenças. 
+Classe, categoria e tipo são as mesmas coisas. Apesar de terem suas diferenças.
 
 `bin(numero_inteiro)`: função que mostra a versão binária de determinado número inteiro.
 `chr(numero_inteiro)`: função que retorna um caractere referente a um número inteiro.
@@ -267,7 +268,7 @@ Usado para converter um caractere Unicode para uma String de caracteres mais sim
 `bytes(variavel, "utf-8")`: converte um texto para uma sequência de bytes usando uma tabela específica para buscar o texto.
 
 __Sliceable:__ habilidade de ser fatiado. Método `__getitem__()`.
-`len()`: retorna a quantidade de itens dentro de um objeto composto. Método `__len__()`.
+`len()`: retorna a quantidade de itens dentro de uma sequência materializadas. Método `__len__()`.
 `next()`: retorna o próximo item de um objeto composto.
 `upper()`: transforma todos os caracteres em maiúsculos.
 `lower()`: transforma todos os caracteres em minúsculos.
@@ -301,7 +302,7 @@ Para substituir no template usa: `template % (variavel, variavel)`. Os dados sem
 
 __Tipos de placeholder__
 
-`%s`: local para ser substituido por um texto, uma String. 
+`%s`: local para ser substituido por um texto, uma String.
 `%d`: local para ser substituido por um dígito, um Int.
 `%03d`: um dígito sendo exibido com 3 casas decimais.
 `%f`: local para ser substituido por um ponto flutuante, um Float.
@@ -352,3 +353,92 @@ Dentro do bloco de f-string pode ser realizado algumas operações, como: `{n1 *
 
 `\n`: quebra de linha no Python
 
+### Tipos de dados Compostos
+
+#### Sequência (Sequence)
+
+- Um só objeto na memória que pode ser atribuído um nome, e dentro desse objeto terá posições para cada objeto.
+- O objeto sequência não vai ter valor para cada objeto dentro dele, mas sim referências, apontandos para determinados espaços na memória que contém os dados.
+
+O tipo composto é um agrupamento onde dentro dele será guardado referências para múltiplos objetos
+
+#### Tuplas (Tuple)
+
+Exemplo: `dados = "Bruno", 2, 3.50, True`
+
+Tipo composto mais simples e bastante comum no Python.
+Cria uma sequência de valores que podem ser de qualquer tipo. Pode ser criado com ou sem parênteses.
+Sempre que um ou mais objetos forem encadeados com `,`, isso será interpretado como um objeto do tipo tupla.
+É imutável, após ser criada os valores dentro dela não podem ser alterados ou adicionados novos valores.
+
+`dados.count("valor")`: informa a quantidade que tem dentro de uma tupla de um determinado valor.
+`dados[-1]`: subscrição, com o método de acesso pelo índice, sendo possível da frente `dados[0]` ou de trás `dados[-2]`.
+Também é possível fatiar uma Tupla. Exemplo: `dados[1:3]`
+
+##### Desempacotamento (Unpacking, Spread, Explode)
+
+```python
+# Empacotamento (atribuição)
+coord = 140, 200, 9
+
+# Desempacotamento (atribuição múltipla)
+x, y, z = coord
+```
+
+Desempacotar cada valor de uma Tupla em variáveis separadas. Desempacota da esquerda para a direita
+
+Selecionar apenas o valor desejado: `x, *_ = pontos`. Nesse caso, o Python vai colocar o primeiro valor em "x" e o restante no "_" (underline).
+Selecionar apenas o primeiro e o último elemento: `x, *_, y = coord`
+
+#### Listas (Lists)
+
+- Objeto mais padrão para se tratar de sequência.
+- As listas são mais flexíveis, podendo ser comparadas com arrays ou vetores.
+- Pode ser criada vazia ou com elementos, por ser mutável, possui tamanho dinâmico, podendo remover ou adicionar novos elementos e reordenação.
+- Tudo que é possível fazer com a Tupla, também é possível ser feito com a Lista.
+
+Meios para criar uma lista:
+
+```python
+# Uso de colchetes, maneira mais usada.
+list = []
+
+# Uso da classe List
+list = list()
+```
+
+`list.append("Valor")`: adiciona um elemento ao final da lista.
+`list.insert(posição, "Valor")`; adiciona um elemento a uma posição específica.
+`list.remove("Valor")`: remove um elemento da lista, caso haja mais de um valor igual, ele irá remover o primeiro valor.
+`list.pop()`: remove elemento por elemento a partir do fim.
+
+Possibilidade de somar listas ou tuplas. Exemplo:
+
+```python
+nomes1 = ["Geovanne", "Alice"]
+nomes2 = ["Beatriz", "Maria"]
+
+nomes1 + nomes2
+# ["Geovanne", "Alice", "Beatriz", "Maria"]
+
+# Usando extend(), extende/adiciona uma lista a outra.
+nomes1.extend(nomes2)
+# nomes1 = ["Geovanne", "Alice", "Beatriz", "Maria"]
+
+# Outra forma de adicionar uma lista ao fim de outra lista
+nomes1 += ["Marcos"]
+# nomes1 = ["Geovanne", "Alice", "Beatriz", "Maria", "Marcos"]
+```
+
+Método `__contains__`: verifica se possui determinado valor de uma lista ou tupla. Alguns objetos ele é lento!
+Exemplo:
+
+```python
+numeros = [0, 4, 8, 12, 16, 20]
+
+8 in numeros
+# True
+
+2 in numeros
+# False
+```
