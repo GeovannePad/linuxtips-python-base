@@ -451,7 +451,7 @@ numeros = [0, 4, 8, 12, 16, 20]
 # False
 ```
 
-### Exercício com listas, tuplas, loops e condicionais
+#### Exercício com listas, tuplas, loops e condicionais
 
 Código do Exercício:
 
@@ -494,4 +494,117 @@ for nome_atividade, atividade in atividades:
     print(f"Alunos de {nome_atividade} da Sala 1:", atividade_sala1)
     print(f"Alunos de {nome_atividade} da Sala 2:", atividade_sala2)
     print("-" * 10)
+```
+
+#### Conjuntos (Sets) e a teoria dos conjuntos
+
+- Cria uma coleção de objetos desordenados mas possui objetos únicos.
+- Pode ser criado vazio.
+
+Para criar um conjunto explicitamente:
+
+```python
+# Um conjunto criado com objeto iterável criado dentro dele.
+conjunto = set(objeto_iteravel)
+```
+
+Adicionar novos elementos:
+
+```python
+conjunto.add(elemento)
+```
+
+- Implementa uma Hash Table, que resolve a complexidade algorítmica em buscas de uma coleção.
+  - Quando uma operação precisa ser executada muitas vezes em uma coleção, ela é denominada O(n).
+  - Quando uma operação precisa ser executada em um conjunto (set) no Python, por conta da Hash Table, o Python sabe exatamente aonde o elemento está, sendo muito mais rápido, denominada O(1) - constante.
+
+##### Operações com Conjuntos
+
+![Operações com Conjuntos](images/operacoes_conjuntos.webp)
+
+###### União
+
+- Retorna a união dos elementos de um set A e um set B em um único set
+
+```python
+conjunto_a = set([1, 2, 3, 4, 5])
+conjunto_b = set([4, 5, 6, 7, 8])
+
+set(conjunto_a) | set(conjunto_b)
+# {1, 2, 3, 4, 5, 6, 7, 8}
+
+# ou
+
+conjunto_a.union(conjunto_b)
+# {1, 2, 3, 4, 5, 6, 7, 8}
+```
+
+###### Intersecção
+
+- Retorna os elementos que aparecem simultaneamente em um set A e um set B.
+
+```python
+conjunto_a = set([1, 2, 3, 4, 5])
+conjunto_b = set([4, 5, 6, 7, 8])
+
+set(conjunto_a) & set(conjunto_b)
+# {4, 5}
+
+# ou
+
+conjunto_a.intersection(conjunto_b)
+# {4, 5}
+```
+
+###### Diferença
+
+Possui dois casos:
+
+- A - B: retorna os elementos que estão no conjunto A mas não estão no conjunto B
+- B - A: retorna os elementos que estão no conjunto B mas não estão no conjunto A
+
+```python
+
+# A - B
+
+conjunto_a = set([1, 2, 3, 4, 5])
+conjunto_b = set([4, 5, 6, 7, 8])
+
+set(conjunto_a) - set(conjunto_b)
+# {1, 2, 3}
+
+# ou
+
+conjunto_a.difference(conjunto_b)
+# {1, 2, 3}
+
+# B - A
+
+conjunto_a = set([1, 2, 3, 4, 5])
+conjunto_b = set([4, 5, 6, 7, 8])
+
+set(conjunto_b) - set(conjunto_a)
+# {6, 7, 8}
+
+# ou
+
+conjunto_b.difference(conjunto_a)
+# {6, 7, 8}
+```
+
+###### Diferença Simétrica
+
+- Retorna todos os elementos que estão apenas em A e todos os elementos que estão apenas em B.
+
+```python
+conjunto_a = set([1, 2, 3, 4, 5])
+conjunto_b = set([4, 5, 6, 7, 8])
+
+set(conjunto_a) ^ set(conjunto_b)
+# {1, 2, 3, 6, 7, 8}
+
+# ou
+
+conjunto_a.symmetric_difference(conjunto_b)
+# {1, 2, 3, 6, 7, 8}
 ```
