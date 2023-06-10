@@ -608,3 +608,138 @@ set(conjunto_a) ^ set(conjunto_b)
 conjunto_a.symmetric_difference(conjunto_b)
 # {1, 2, 3, 6, 7, 8}
 ```
+
+#### Dicionários
+
+- Conhecidos também como HashMaps ou Arrays Associativos.
+- Supertipo de dado que possui características parecidas com um misto do Set e da List.
+- Objeto mutável, permite inserir elementos.
+- Objeto iterável, permite percorrer os elementos
+- Implementa a Hash Table
+- Ele guarda duas informações de qualquer tipo por espaço: key -> value, mas não permite chaves duplicadas.
+
+Sintaxe de criação de um dicionário:
+
+```python
+# Criando com apenas as chaves
+dictionary = {}
+
+# Criando com a função dict()
+dictionary = dict()
+
+# Pode ser criado com valores
+dictionary = {"nome": "Geovanne", "cod": 123}
+```
+
+- As chaves devem ser objetos que possui suporte para Hash Table
+
+Acessar objetos dentro do dicionário:
+
+```python
+cliente = {"nome": "Geovanne", "cod": 123}
+
+# O objeto é acessado através da chave (key)
+cliente["nome"]
+```
+
+Possível inserir novas chaves com novos valores:
+
+```python
+cliente = {"nome": "Geovanne", "cod": 123}
+
+# Forma para adicionar uma nova chave com valor ao dicionário já existente
+cliente["cidade"] = "Viana"
+```
+
+Remover objetos dentro do dicionário:
+
+```python
+cliente = {"nome": "Geovanne", "cod": 123}
+
+# Excluir o nome do cliente, ficando apenas o cod
+del cliente["nome"]
+```
+
+Verificar se um objeto existe dentro do dicionário:
+
+```python
+cliente = {"nome": "Geovanne", "cod": 123}
+
+"cod" in cliente
+# True
+
+"cidade" in cliente
+# False
+```
+
+- Caso a busca for baseada na chave, a busca será rápida, mas caso seja baseada no valor, a busca não será tão rápido, para isso seria necessário criar um algoritmo de busca de árvore invertida.
+
+Forma de acessar chaves e valores de forma separada:
+
+```python
+cliente = {"nome": "Geovanne", "cod": 123}
+
+# Acessar apenas as chaves do dicionário
+cliente.keys()
+
+# Acessar apenas os valores do dicionário
+cliente.values()
+
+# Acessar as chaves com os valores em forma de Tupla
+cliente.items()
+```
+
+Forma de juntar dicionários:
+
+```python
+cliente = {"nome": "Geovanne", "cod": 123}
+extra = {"pais": "Portugal"}
+
+# Junção das chaves e valores de um dicionário em um outro dicionário
+cliente.update(extra)
+```
+
+Desempacotamento de dicionários, criando um novo dicionário a partir de outros dois (Sintaxe nova do Python 3):
+
+```python
+cliente = {"nome": "Geovanne", "cod": 123}
+extra = {"pais": "Portugal"}
+
+# Desempacotamento em um novo dicionário
+final = {**extra, **cliente}
+# final = {"pais": "Portugal", "nome": "Geovanne", "cod": 123}
+```
+
+##### Observação sobre desempacotamento no Python 3
+
+- Para passar algo para um objeto e desempacotar ao mesmo tempo, no Python 3, é utilizado os asteristicos (*)
+- Para objetos com um único elemento em cada posição usa apenas um asterístico (*)
+- Para objetos com mais de um elemento em cada posição usa dois asterísticos (**)
+
+```python
+# Desempacotamento de sequências com um único elemento em cada posição
+clientes = ["Maria", "João", "Bruno"]
+
+primeiro_cliente, *_ = clientes
+# primeiro_cliente = "Maria"
+# _ = ["João", "Bruno"]
+
+# Desempacotamento de sequências com mais de um elemento em cada posição (dicionário)
+cliente = {"nome": "Geovanne", "cod": 123}
+extra = {"pais": "Portugal"}
+
+final = {**extra, **cliente}
+# final = {"pais": "Portugal", "nome": "Geovanne", "cod": 123}
+```
+
+- Quando se itera por padrão em um dicionário, retorna apenas as chaves.
+
+Acessar uma chave, podendo dar um valor padrão a chave caso ela não exista, para contornar o erro:
+
+```python
+
+# Função para acessar um campo do dicionário através da chave e caso não existir, será passado um valor padrão
+dictionary.get(key, default_value)
+```
+
+__Builtins:__ Módulo com as funções onde dentro dele tem um dicionário com todas as funções do Python.
