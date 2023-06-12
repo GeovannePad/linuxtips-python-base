@@ -743,3 +743,27 @@ dictionary.get(key, default_value)
 ```
 
 __Builtins:__ Módulo com as funções onde dentro dele tem um dicionário com todas as funções do Python.
+
+##### Refatorando o Hello World usando dicionários
+
+Código:
+
+```python
+__version__ = "0.1.2" # Metadado que determina a versão do programa.
+__author__ = "Geovanne" # Metadado que determina o nome do autor do programa.
+__license__ = "Unlicense" # Metadado que determina o tipo de licença do programa.
+
+import os # Biblioteca usado para que o Python se comunique com o SO.
+
+current_language = os.getenv("LANG", "en_US")[:5] # Comando para obter o valor de uma variável de ambiente, contendo um valor padrão "en_US" e sendo fatiada a partir do primeiro caractere até o quinto. [:5]
+
+msg = {
+    "en_US": "Hello, World!",
+    "pt_BR": "Olá, Mundo!",
+    "it_IT": "Ciao, Mondo!",
+    "es_SP": "Hola, Mundo!",
+    "fr_FR": "Bonjour, Monde!",
+}
+
+print(msg[current_language]) # Função de imprimir algo na tela (output)
+```
