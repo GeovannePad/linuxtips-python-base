@@ -2,6 +2,11 @@
 
 ## Comandos
 
+### Linux
+
+`cat arquivo`: mostra todo o conteúdo em forma de texto do arquivo em questão.
+`tail -f arquivo`: fica "observando" o arquivo, mostrando alterações em tempo real.
+
 ### Console
 
 `python -c "comando"`: executa comandos Python no terminal
@@ -823,4 +828,116 @@ for atividade in atividades:
         alunos = set(salas[sala]) & set(atividades[atividade])
         print(f"Alunos de {atividade} da {sala}: ", alunos)
     print("-" * 50)    
+```
+
+## Input-Output, Algoritmos, Condicionais, Repetições - Day 3
+
+### Standard Input & Output e argumentos do CLI
+
+- Duas interfaces virtuais importantes para programar softwares de terminal que são a stdin e a stdout.
+- Para imprimir algo na tela a CPU envia a informação para o stdout.
+- Para ler as informações a partir de um dispositivo de entrada utiliza o stdin.
+
+![Diagrama Stdin e Stdout](images/stdin-stdout.png)
+
+Bios -> CPU -> HD -> Memória Principal (RAM) -> CPU -> stdout
+
+__Módulo sys:__ módulo para interação com o sistema.
+
+Retornar o sistema operacional:
+
+```python
+sys.platform
+```
+
+#### Stdout
+
+- Responsável por se comunicar via texto com a respectiva interface
+- Esse objeto é um file descriptor.
+- Arquivo "virtual"
+
+Escrever algo com o stdout:
+
+```python
+sys.stdout.write("Hello World")
+# Hello World11, 11 é a quantidade de caracteres que foi impressa
+
+# A função print é uma abstração do sys.stdout.write()
+print("Hello World")
+```
+
+Função de imprimir algo dentro de um arquivo ou qualquer objeto que seja um file descriptor, neste caso o stdout é o arquivo "hello.txt":
+
+```python
+print("Hello", file=open("hello.txt", "a"))
+```
+
+#### Stdin
+
+- Mesmas características do stdout, a diferença é que o stdin recebe as informações através de um dispositivo de entrada por um interface padrão, como o prompt de comandos.
+- O input também serve para dar uma pausa no programa, onde o input() está esperando receber a tecla Enter.
+- Todo valor lido no input() vem no formato de String.
+- Também considera espaços em branco.
+
+Método de leitura:
+
+```python
+# O 3 é quantidade de caracteres que ele espera receber
+sys.stdin.read(3)
+
+# A função input é uma abstração do sys.stdout.write()
+input("Qual é o seu nome? ")
+```
+
+Retirar espaços em branco do final e do começo de uma String:
+
+```python
+string = "    Geovanne    Padilha     "
+
+string.strip()
+# "Geovanne Padilha"
+```
+
+#### CLI Args
+
+- Argumentos de linha de comando.
+- Todas as ferramentas de linha de comando nos oferece uma interface para facilitar o uso de comandos.
+- Segunda forma de ler valores que são inseridos para um programa.
+
+Forma de ler os argumentos separados por espaço que são passados na frente do programa ao executar:
+
+```python
+sys.argv
+```
+
+Dividir uma String em duas partes com base em um caractere separador:
+
+```python
+arg = "--lang=fr_FR"
+
+arg.split("=")
+# ["--lang", "fr_FR"]
+```
+
+Retirar um caractere da esquerda de uma String:
+
+```python
+string = "--nome-composto--"
+
+string.lstrip("-")
+# "nome-composto--"
+```
+
+Força o programa a parar a execução:
+
+```python
+sys.exit()
+```
+
+Hack para passar o argumento substituindo o valor do stdin pelo Pipe:
+Se for um programa de processamento de String, que trata um texto. Mas programas com interações com usuário não aceita esse tipo de entrada.
+
+```python
+echo "en_US" | python3 hello.py
+# Choose a language: Hello, World!
 ```
