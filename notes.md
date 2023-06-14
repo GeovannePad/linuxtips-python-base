@@ -6,6 +6,13 @@
 
 `cat arquivo`: mostra todo o conteúdo em forma de texto do arquivo em questão.
 `tail -f arquivo`: fica "observando" o arquivo, mostrando alterações em tempo real.
+`mkdir pasta`: cria uma pasta
+`cd pasta`: acessa uma pasta
+`pwd`: mostra o caminho da pasta atual
+`touch arquivo`: cria um arquivo em branco
+`ls`: listar arquivos
+`echo "Texto" >> arquivo`: escreve em um arquivo. Usando ">" ele abre no modo de "write" substituindo todo o conteúdo do arquivo ao escrever. Usando ">>" ele abre no modo de "append" e não substitui o conteúdo já colocado no arquivo, apenas adiciona ao final.
+`cat arquivo`: ler o conteúdo de um arquivo
 
 ### Console
 
@@ -1000,3 +1007,190 @@ elif operation == "div":
     
 print(f"O resultado é {result}")
 ```
+
+### Manipulando arquivos e pastas
+
+#### Uso da biblioteca "os"
+
+Listar o conteúdo da pasta atual:
+
+```python
+import os
+
+# O ponto significa pasta atual
+os.listdir(".")
+# Retorna uma lista Python contendo todos os nomes de pastas e arquivos.
+```
+
+Criar uma pasta:
+
+```python
+import os
+
+os.mkdir("pasta")
+```
+
+Entra numa pasta:
+
+```python
+import os
+
+os.chdir(path)
+```
+
+Cria uma pasta sem dar erro caso a pasta já exista:
+
+```python
+import os
+
+os.makedirs("pasta/subpasta", exist_ok=True)
+```
+
+Forma recomendada de criar pastas sem as barras, para não dar conflito:
+
+```python
+import os
+
+# Retorna o caminho com base no padrão de caminho do SO em questão, no Windows "\" ou no Linux "/".
+path = os.path.join("pasta", "subpasta")
+# pasta/subpasta
+
+os.makedirs(path, exist_ok=True)
+```
+
+Retorna o caminho do diretório atual:
+
+```python
+import os
+
+# Importa o diretório atual em qualquer SO
+os.curdir
+```
+
+Criar um arquivo vazio:
+
+```python
+import os
+
+os.mknod(os.path.join(path, "arquivo.txt"))
+```
+
+Retorna somente o nome do arquivo do caminho:
+
+```python
+import os
+
+os.path.basename(filepath)
+```
+
+Retorna se o caminho do arquivo existe ou não:
+
+```python
+import os
+
+os.path.exists(filepath)
+```
+
+Caminho absoluto/completo de uma pasta:
+
+```python
+import os
+
+os.path.abspath(path)
+```
+
+File descriptor que interage com um arquivo txt:
+
+```python
+
+# Abre o arquivo em modo padrão de leitura
+# Quando se usa o "w" no segundo argumento, o arquivo abre em modo de escrita
+arquivo = open(filepath, "w")
+
+# Lê o arquivo, consome as linhas
+arquivo.read()
+
+# Escreve no arquivo
+# Se o arquivo estiver em modo "w", quando der um write() ele substitui todo o contéudo do arquivo.
+arquivo.write(texto)
+
+# Fecha o arquivo
+arquivo.close()
+
+# Abre o arquivo em modo de "append", não substituindo o conteúdo do arquivo quando se escreve nele.
+arquivo = open(filepath, "a")
+```
+
+__Context manager__, jeito correto para escrever em um arquivo:
+
+```python
+
+# Não há a necessidade de se preocupar com o fechamento do arquivo.
+with open(filepath, "a") as arquivo:
+    arquivo.write("Hello\n")
+    arquivo.write("World\n")
+```
+
+Jeito prático de escrever um arquivo usando a função print():
+
+```python
+    print("Brasil", file=open(filepath, "a"))
+```
+
+Escreve várias linhas de uma única vez:
+
+```python
+arquivo.writelines(lista)
+```
+
+Retorna uma lista a partir das linhas de um texto em um arquivo:
+
+```python
+arquivo.readlines()
+```
+
+#### Pathlib
+
+- Biblioteca do Python 3
+- Abordagem orientada a objetos
+- Possui vários métodos mais inteligentes
+
+```python
+from pathlib import Path
+```
+
+Juntar pastas, criar um caminho de pastas:
+
+```python
+path = Path("pasta") / Path("subpasta")
+```
+
+Criar um caminho de um arquivo
+
+```python
+filepath = path / Path("arquivo.txt")
+```
+
+Criar uma nova subpasta:
+
+```python
+# Cria um objeto representando o caminho para a pasta
+path / "outrapasta"
+
+# Cria a pasta
+filepath = (path / "outrapasta").mkdir()
+```
+
+Escrever e ler dentro do arquivo:
+
+```python
+# Escrever
+filepath.write_text("Bruno")
+
+# Ler
+filepath.read_text()
+```
+
+#### Guia de referência
+
+![Guia de referência](images/guia-referencia-arquivos.png)
