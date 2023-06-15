@@ -1239,3 +1239,96 @@ if arguments[0] == "read":
             print("-" * 30)
             print()
 ```
+
+### Tratamento de Erros com Exceptions
+
+#### LBYL - Look Before You Leap
+
+Exemplo:
+
+```python
+if len(names) >= 3:
+    print(names[1])
+else:
+    print("Missing name in the list")
+```
+
+Erro: LBYL + Race Condition:
+
+```python
+
+import sys
+import os
+
+# LBYL - Look Before You Leap
+
+if os.path.exists("day3/names.txt"):
+    print("O arquivo existe")
+    input("...") # Race Condition
+    names = open("day3/names.txt").readlines()
+else:
+    print("[Error] File names.txt not found")
+    sys.exit(1)
+
+if len(names) >= 3:
+    print(names[1])
+else:
+    print("[Error] Missing name in the list")
+    sys.exit(1)
+```
+
+#### EAFP - Easy to Ask Forgiveness Than Permission
+
+Exemplo:
+
+```python
+try:
+    names = open("day3/names.txt").readlines()
+except: # Bare except, captura qualquer exceção
+    print("[Error] File names.txt not found")
+    sys.exit(1)
+
+```
+
+Bare except: captura qualquer erro dentro do "try"
+Dentro de um bloco "try" é possível ter vários "excepts" um para cada categoria de erro.
+
+Exemplo de tratamento sem bare except:
+
+```python
+try:
+    names = open("day3/names.txt").readlines() #FileNotFoundError
+except FileNotFoundError:
+    print("[Error] File names.txt not found")
+    sys.exit(1)
+```
+
+Também é possível tratar mais de um erro por except e usar um objeto que armazena a mensagem do erro para exibir "e"
+Também é possível usar um else no fim do bloco para quando nenhuma exceção é estourada
+O bloco do "finally" sempre irá executar o bloco de código mesmo que tenha ou não um erro.
+
+```python
+try:
+    names = open("day3/names.txt").readlines() #FileNotFoundError
+except (FileNotFoundError, ZeroDivisionError) as e:
+    print(str(e))
+    sys.exit(1)
+else:
+    print("Sucesso")
+finally:
+    print("Execute isso sempre")
+```
+
+Retry: várias tentativas de execução.
+
+Forma de forçar um erro, usando "raise":
+
+```python
+try:
+    raise RuntimeError("Ocorreu um erro")
+except Exception as e:
+    print(str(e))
+
+```
+
+Sempre mostrar os erros!

@@ -32,7 +32,6 @@ import sys
 
 arguments = sys.argv[1:]
 
-# TODO: Usar Exceptions
 if not arguments:
     operation = input("operação: ")
     n1 = int(input("n1: "))
@@ -63,7 +62,11 @@ for num in nums:
         num = int(num)
     validated_nums.append(num)
     
-n1, n2 = validated_nums
+try:
+    n1, n2 = validated_nums
+except ValueError as e:
+    print(str(e))  
+    sys.exit(1)
     
 # TODO: Usar dict de funções
 if operation == "sum":

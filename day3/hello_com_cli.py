@@ -31,9 +31,16 @@ arguments = {"lang": None, "count": 1,} # Dicionário contendo os argumentos esp
 
 # Iterando em cima de todos os elementos a partir do 2º passado no CLI
 for arg in sys.argv[1:]:
-    # TODO: Tratar ValueError
-    
-    key, value = arg.split("=") # Divide o argumento em dois pelo caractere "=" e desempacota a 1ª parte na variável "key" e a 2ª parte na variável "value"
+    try:
+        key, value = arg.split("=") # Divide o argumento em dois pelo caractere "=" e desempacota a 1ª parte na variável "key" e a 2ª parte na variável "value"
+    except ValueError as e:
+        # TODO: Logging
+        print(f"[ERROR] {str(e)}")
+        print("You need to use `=`")
+        print(f"You passed {arg}")
+        print("Try with --key=value")
+        sys.exit(1)
+        
     key = key.lstrip("-").strip() # Remove o caractere especial "-" do início da string, juntamente dos espaços em brancos de anbos os lados da variável "key".
     value = value.strip() # Remove os espaços em branco de ambos os lados da variável "value"
     
@@ -70,4 +77,17 @@ msg = {
     "fr_FR": "Bonjour, Monde!",
 }
 
-print(msg[current_language] * int(arguments["count"]))
+"""
+# try com valor default
+message = msg.get(current_language, msg["en_US"])
+"""
+
+try:
+    current_language in msg
+    message = msg[current_language]
+except KeyError as e:
+    print(f"[ERROR] {str(e)}")
+    print(f"Language is invalid, choose from: {list(msg.keys())}")   
+    sys.exit(1)
+
+print(message * int(arguments["count"]))
