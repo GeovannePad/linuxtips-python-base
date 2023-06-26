@@ -1332,3 +1332,134 @@ except Exception as e:
 ```
 
 Sempre mostrar os erros!
+
+### Gravando logs
+
+#### Stderr
+
+- Interface virtual padrão para onde vai as mensagens de erro do computador.
+
+Redirecionar mensagens de erro na saída padrão "stderr" e gravar em um arquivo específico:
+
+```console
+python logs.py &2> arquivo
+```
+
+#### Biblioteca logging
+
+- Resolve o problema específico de exibir mensagens e erros na tela e enviar essas mensagens para arquivos ou até mesmo por e-mail.
+- Quando se usa a biblioteca "logging" não se pode usar a formatação f-string ou String Format
+
+Importar a biblioteca "logging":
+
+```python
+import logging # root logger
+```
+
+- Todos os programas que importarem a biblioteca logging eles vão estar comunicando com o mesmo objeto padrão.
+
+Informar um erro crítico:
+
+```python
+logging.critical(msg)
+# CRITICAL:root:msg
+```
+
+Informar um erro qualquer:
+
+```python
+logging.error(msg)
+# ERROR:root:msg
+```
+
+A biblioteca logging possui "levels" que define a prioriedade dos loggers:
+
+![Logging Levels](images/logging_levels.png)
+
+- O DEBUG é mensagens para desenvolvedores.
+- O INFO é mensagens de informações úteis diversas para qualquer usuário.
+- O WARNING é para avisar o usuário que algo mudou ou algo que o usuário fez de erro, mas não necessariamente indica um erro.
+- O ERROR são mensagens de erro causado pelo usuário. O usuário causou o erro. Erro em uma única execução.
+- O CRITICAL são erros de sistemas, que afeta todos os usuários.
+
+Por padrão, os logs, em Python, estão setados para o WARNING, ou seja, será exibido apenas as mensagens de WARNING, ERROR e CRITICAL.
+
+Criando uma instância própria do Logger que seja diferente da padrão:
+
+```python
+# O primeiro parâmetro é o nome do Logger é definido pelo nome do script ou então "main"
+# O segundo parâmetro do logger é o level, podendo ser usado o nome do level, o valor númerico, ou uma constante, sendo a constante a mais recomendada.
+log = logging.Logger(__name__, logging.DEBUG)
+```
+
+##### Handlers
+
+- Handler é uma classe responsável pelo destino ao qual o log será impresso.
+- Para alterar a formatação é necessário ter um Handler próprio.
+
+Definindo um Handler para o console/terminal/stderr:
+
+```python
+ch = logging.StreamHandler()
+
+# Setar o level da instância do Handler
+ch.setLevel(logging.DEBUG)
+```
+
+Definindo um Handler para arquivos:
+
+```python
+# O primeiro parâmetro é o caminho e o nome do arquivo de logs
+# O segundo parâmetro é o máximo de bytes (tamanho) para cada arquivo de logs
+# O terceiro parâmetro é o máximo de arquivos que serão criados
+fh = handlers.RotatingFileHandler(
+    "meulog.log", 
+    maxBytes=10 ** 6, # 10 ** 6 bytes = 1 mb
+    backupCount = 10,
+)
+fh.setLevel(log_level)
+```
+
+Definindo uma formatação personalizada:
+
+```python
+# Na biblioteca logging não é possível usar String Format ou F-String
+
+# asctime é timestamp do erro
+# name é o nome da instância do Logger
+# levelname é o tipo de erro que ocorreu
+# lineno é a linha onde o erro ocorreu
+# filename é o caminho do arquivo e o nome do arquivo que o erro ocorreu
+# message é a mensagem do erro
+fmt = logging.Formatter(
+    '%(asctime)s %(name)s %(levelname)s l:%(lineno)d f:%(filename)s: %(message)s'
+)
+
+handler.setFormatter(fmt)
+```
+
+Definindo o destino dos erros no Logger:
+
+```python
+log.addHandler(handler)
+```
+
+##### Boilerplate
+
+- Código repetitivo, que se repete em todo programa.
+
+Exemplo:
+
+```python
+import logging
+
+log_level = os.getenv("LOG_LEVEL", "WARNING").upper()
+log = logging.Logger(__name__, log_level)
+ch = logging.StreamHandler()
+ch.setLevel(log_level)
+fmt = logging.Formatter(
+    '%(asctime)s %(name)s %(levelname)s l:%(lineno)d f:%(filename)s: %(message)s'
+)
+ch.setFormatter(fmt)
+log.addHandler(ch)
+```

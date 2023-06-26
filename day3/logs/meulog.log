@@ -1,0 +1,6 @@
+2023-06-26 13:55:42,640 __main__ CRITICAL l:44 f:logs.py: Erro geral ex: banco de dados sumiu
+2023-06-26 13:55:42,641 __main__ ERROR l:45 f:logs.py: Erro que afeta uma única execução
+2023-06-26 13:55:42,641 __main__ WARNING l:46 f:logs.py: Aviso que não causa erro
+2023-06-26 13:55:42,641 __main__ INFO l:47 f:logs.py: Mensagem geral para usuários
+2023-06-26 13:55:42,641 __main__ DEBUG l:48 f:logs.py: Mensagem pro dev, qe, sysadmin
+2023-06-26 13:55:42,641 __main__ ERROR l:55 f:logs.py: Deu erro division by zero
