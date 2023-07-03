@@ -1463,3 +1463,128 @@ fmt = logging.Formatter(
 ch.setFormatter(fmt)
 log.addHandler(ch)
 ```
+
+### Exercícios: Algoritmos
+
+#### Tabela de precedência de operadores aritméticos no Python
+
+![Tabela de precedência de operadores aritméticos no Python](images/precedence_arithmetic_operators.png)
+
+#### Algoritmos
+
+Sequência de instruções lógicas que visam obter a solução de um problema.
+
+__Exemplo:__ receitas culinárias
+
+#### Problema
+
+__Problema:__ Ir a padaria e comprar pão
+__Premissa:__ Padaria da Esquina abre fds: até 12h, semana até 19h, feriado (exceto Natal) não abre
+
+1. A padaria está aberta?
+  1.1. Se é feriado E não é natal: não
+  1.2. Senão, se é sábado OU domingo E antes do meio dia: sim
+  1.3. Senão, se é dia de semana E antes das 19h: sim
+  1.4. Senão: não
+2. Se padaria está aberta E:
+  2.1. Se está chovendo: pegar guarda-chuva
+  2.2. Se está chovendo E calor: pegar guarda-chuva e garrafa de água
+  2.3. Se está chovendo E frio OU nevando: pegar guarda-chuva, blusa e botas.
+  2.4. Ir até a padaria:
+    1. Se tem pão integral E baguete: pedir 6 de cada
+    2. Senão, se tem apenas pão integral OU baguete: pedir 12
+    3. Senão: pedir 6 de qualquer pão
+3. Senão
+  3.1. Ficar em casa e comer bolachas
+
+##### Statements
+
+- Se -> if
+- Senão, se -> elif
+- Senão -> else
+
+##### Operadores lógicos
+
+- E -> and
+- OU -> or
+- Não -> not
+
+##### Assignments
+
+- A padaria está aberta? (boll, True|False)
+
+##### Expressions
+
+- é feriado?
+- é natal?
+- é feriado E NÃO é Natal?
+- é sábado?
+- é domingo?
+- é sábado OU é domingo?
+
+##### Actions
+
+- Função/método/instrução
+- Pegar
+- Ir
+- Pedir
+- Tem
+- Comer
+
+##### Transformando em pseudo-código
+
+```python
+import pegar, ir, pedir, tem, comer
+```
+
+###### Premissas
+
+```python
+today = "Segunda"
+hora_atual = 15
+natal = False
+chovendo = True
+frio = False
+nevando = True
+semana = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"]
+feriados = ["Quarta"]
+horario_padaria {
+    "semana": 19,
+    "fds": 12,
+}
+```
+
+###### Algoritmo
+
+```python
+if today in feriados and not natal:
+    padaria_aberta = False
+elif today not in semana and hora_atual < horario_padaria["fds"]:
+    padaria_aberta = True
+elif today in semana and hora_atual < horario_padaria["semana"]:
+    padaria_aberta = True
+else:
+    padaria_aberta = False
+
+if padaria_aberta:
+    if chovendo and (frio or nevando):
+        pegar("guarda chuva")
+        pegar("blusa")
+        pegar("botas")
+    elif chovendo and not frio:
+        pegar("guarda chuva")
+        pegar("agua")
+    elif chovendo:
+        pegar("guarda chuva")
+    ir("padaria")
+
+    if tem("pao integral") and tem("baguete"):
+        pedir(6, "pao integral")
+        pedir(6 "baguete")
+    elif tem("pao integral") or tem("baguete"):
+        pedir(12, "pao integral ou baguete")
+    else:
+        pedir(6, "qualquer pao")
+else:
+    comer("bolachas")
+```
