@@ -1588,3 +1588,51 @@ if padaria_aberta:
 else:
     comer("bolachas")
 ```
+
+### Condicionais ternárias e inlines
+
+- O OR é um short circuit, na primeira ocorrência de True ele finaliza.
+
+#### Truthy and Falsy
+
+- Elementos que se comportam como True ou False
+- Exemplos:
+  - Listas, dicionários ou Strings vazias se comportam como False e caso não contenham elemento se comportam como True
+  - O número 0 se comporta como False e o 1 se comporta como True.
+
+#### IF ternária / IF inline
+
+- Realizar uma expressão de comparação em apenas uma linha,
+
+Exemplo:
+
+```python
+n1 = 1
+n2 = 9
+
+valor = "ok" if n2 > n1 else "nok"
+# Para realizar a atribuição de "ok" ou "nok" a variável primeiramente será realizando a expressão.
+# Obrigatoriamente deve colocar um else com um valor padrão
+```
+
+- Não funciona apenas com expressões
+
+```python
+n1 = 8
+n2 = 10
+
+print("ok" if n1 > n2 else "nok")
+```
+
+- Forma de usar o OR para realizar uma operação inline evitando o uso de um IF.
+- Usar com cuidado!!
+
+Exemplo:
+
+```python
+nome = ""
+
+print(f"Olá {nome or 'pessoa'}, Boas Vindas")
+```
+
+- `help("symbols")`: ver quase todos os símbolos que existem no Python
