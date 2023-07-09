@@ -1636,3 +1636,172 @@ print(f"Olá {nome or 'pessoa'}, Boas Vindas")
 ```
 
 - `help("symbols")`: ver quase todos os símbolos que existem no Python
+
+### Exercícios: iterações, textos, inputs, arquivos de texto
+
+#### Exercício: numeros_pares
+
+Código:
+
+```python
+numero = 1
+while numero <= 200:
+    if numero % 2 == 0:
+        print(numero)
+    numero += 1
+
+"""
+for num in range(1, 201):
+    if num % 2 == 0:
+        print(num)
+"""
+```
+
+#### Exercício: alerta
+
+Código:
+
+```python
+import logging
+import sys
+log = logging.Logger("alerta")
+
+info = {
+    "temperatura": None,
+    "umidade": None,
+} # Dict / Mutável
+
+for key in info.keys(): # Iterando um dict mutável
+    try:
+        info[key] = float(input(f"Qual a {key}?: ").strip())
+        # Alterando durante a iteração
+    except ValueError:
+        log.error(f"{key.capitalize()} inválida")
+        sys.exit(1)
+
+temperatura = info["temperatura"]
+umidade = info["umidade"]
+
+if temperatura > 45:
+    print("ALERTA!!! Perigo calor extremo")
+elif (temperatura * 3) >= umidade:
+    print("ALERTA!!! Perigo de calor úmido")
+elif temperatura >= 10 and temperatura <= 30:
+    print("Normal")
+elif temperatura >= 0 and temperatura < 10:
+    print("Frio")
+elif temperatura < 0:
+    print("ALERTA!!! Frio extremo")
+```
+
+- Evitar alterar um objeto mutável como um dicionário durante uma iteração do mesmo objeto.
+- `dict.keys()`: retorna um objeto diferente do dicionário contendo apenas as chaves, sendo mais seguro para realizar a iteração e alteração ao mesmo tempo.
+
+#### Exercício: repete_vogal
+
+Código:
+
+```python
+words = []
+while True:
+    word = input("Digite uma palavra (ou enter para sair): ").strip()
+    if not word:
+        break
+    
+    final_word = ""
+    for letter in word:
+        # TODO: Remover acentuação usando função
+        final_word += letter * 2 if letter.lower() in "aeiou" else letter
+        
+        # IF convencional
+        """
+        if letter.lower() in "aeiou":
+            final_word += letter * 2
+        else:
+            final_word += letter
+        """
+    
+    words.append(final_word)
+
+print(*words, sep="\n")
+```
+
+#### Exercício: reserva
+
+```python
+import sys
+import os
+import logging
+
+log = logging.Logger("reserva")
+
+# Caminhos dos arquivos de quartos e reservas
+path = os.curdir
+rooms_filepath = os.path.join(path, "day3", "exercices", "reserva", "quartos.txt")
+reservations_filepath = os.path.join(path, "day3", "exercices", "reserva", "reservas.txt")
+
+# Criando o arquivo de reserva, caso não exista
+if not os.path.exists(reservations_filepath):
+    os.mknod(os.path.join(path, "day3", "exercices", "reserva", "reservas.txt"))
+# Lendo o arquivo de reservas e armazenando os quartos que já estão reservados em uma lista.
+reserved_rooms = []
+# Verificando se o arquivo está vazio
+if not os.stat(reservations_filepath).st_size == 0:
+    for line in open(reservations_filepath):
+        _, reserved_room, _ = line.split(",")
+        reserved_rooms.append(int(reserved_room.strip()))
+
+
+# Lendo o arquivo de quartos e armazenando os dados dos quartos em um dicionário.
+try:
+    rooms = {}
+    for line in open(rooms_filepath):
+        room_number, room_name, room_price = line.split(",")
+        rooms[int(room_number)] = {
+            "name": room_name.strip(),
+            "price": float(room_price.replace("\n", "").strip()),
+            "available": False if int(room_number) in reserved_rooms else True,
+        }
+except FileNotFoundError:
+    print("Arquivo de quartos não existe.")
+    sys.exit(1) 
+
+client_name = input("Qual é o seu nome?: ")
+# Tabela mostrando os quartos
+print("{:-^59}".format("Quartos"))
+print("{:^12} | {:^14} | {:^14} | {:^8}".format("Nº do quarto", "Tipo de quarto", "Valor em reais", "Disponível"))
+for room in rooms:    
+    print("{:^12} | {:^14} | {:^14.2f} | {:^8}".format(room, rooms[room]["name"], rooms[room]["price"], "✅" if rooms[room]["available"] else "❌"))
+print("-" * 59)
+
+# Verificando se foram inseridos valores não numéricos na variável "room" e se o nº do quarto existe
+try:
+    room = int(input("Qual o número do quarto que deseja reservar?: "))
+    if room in reserved_rooms:
+        print(f"O Quarto {room} já está reservado!")
+        sys.exit(1)
+    elif not room in rooms.keys():
+        print(f"O Quarto {room} é inválido")
+        sys.exit(1)
+except ValueError as e:
+    log.error("Valor não numérico inserido, favor inserir novamente!")
+    print(e)
+    sys.exit(1)
+
+# Verificando se foi inserido valores não numéricos na variável "days"
+try:
+    days = int(input("Quantos dias deseja ficar?: "))
+except ValueError as e:
+    log.error("Valor não numérico inserido, favor inserir novamente!")
+    print(e)
+    sys.exit(1)
+
+confirmation = input("Gostaria de confirmar a reserva? (S(s) ou Sim/N(n) ou Não): ")
+
+if confirmation in "SsSim":
+    print(f"O valor total da sua reserva é de {rooms[room]['price'] * days}")
+    with open(reservations_filepath, "a") as file_:
+        file_.write(f"{client_name}, {room}, {days} \n")
+else:
+    print("Reserva cancelada.")
+```
