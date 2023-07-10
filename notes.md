@@ -1684,7 +1684,7 @@ umidade = info["umidade"]
 
 if temperatura > 45:
     print("ALERTA!!! Perigo calor extremo")
-elif (temperatura * 3) >= umidade:
+elif temperatura > 30 and (temperatura * 3) >= umidade:
     print("ALERTA!!! Perigo de calor úmido")
 elif temperatura >= 10 and temperatura <= 30:
     print("Normal")
@@ -1695,7 +1695,7 @@ elif temperatura < 0:
 ```
 
 - Evitar alterar um objeto mutável como um dicionário durante uma iteração do mesmo objeto.
-- `dict.keys()`: retorna um objeto diferente do dicionário contendo apenas as chaves, sendo mais seguro para realizar a iteração e alteração ao mesmo tempo.
+- `dict.copy()`: cria uma cópia temporária de um objeto para então poder realizar alterações durante uma iteração.
 
 #### Exercício: repete_vogal
 
@@ -1804,4 +1804,14 @@ if confirmation in "SsSim":
         file_.write(f"{client_name}, {room}, {days} \n")
 else:
     print("Reserva cancelada.")
+```
+
+#### List Comprehension
+
+- Construção sintática para criação de uma lista baseada em listas existentes.
+
+Exemplo:
+
+```python
+[value for value in list.values() if value is not None]
 ```

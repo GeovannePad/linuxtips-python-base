@@ -21,7 +21,7 @@ info = {
     "umidade": None,
 } # Dict / Mutável
 
-for key in info.keys(): # Iterando um dict mutável
+for key in info.copy().keys(): # Iterando um dict mutável
     try:
         info[key] = float(input(f"Qual a {key}?: ").strip())
         # Alterando durante a iteração
@@ -34,7 +34,7 @@ umidade = info["umidade"]
 
 if temperatura > 45:
     print("ALERTA!!! Perigo calor extremo")
-elif (temperatura * 3) >= umidade:
+elif temperatura > 30 and (temperatura * 3) >= umidade:
     print("ALERTA!!! Perigo de calor úmido")
 elif temperatura >= 10 and temperatura <= 30:
     print("Normal")
