@@ -1815,3 +1815,208 @@ Exemplo:
 ```python
 [value for value in list.values() if value is not None]
 ```
+
+## Funções, Debugging, Projetos e Bibliotecas - Day 4
+
+### Funções úteis embutidas no Python - builtins
+
+- Bloco de código encapsulado dentro de um objeto, um tipo de objeto.
+- As funções builtins não estão "disponíveis", pois elas estão escritas em linguagem C.
+- Toda função possui atributos.
+- O atributo `__code__` de uma função do Python contém o local do código compilado dessa função.
+- As funções em Python são objetos de primeira classe, significa que pode ser usada para tudo, como colocar uma função dentro de um dicionário.
+
+#### Biblioteca Builtin
+
+- Funções já imbutidas no Python.
+- Exemplo: `print()`, `sum()`.
+
+#### Biblioteca Stdlib
+
+- Biblioteca padrão instalada junto com o Python, que contém vários pacotes.
+- Esses pacotes necessitam ser importados para serem usados.
+
+#### Funções úteis da biblioteca Builtin
+
+Função `sum()`:
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+# Obtém a soma dos números dentro de uma coleção numérica
+print(sum(numeros))
+# 15
+```
+
+Função `max()`:
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+# Retorna o maior valor dentro de uma coleção númerica
+print(max(numeros))
+# 5
+```
+
+Função `min()`:
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+# Retorna o menor valor dentro de uma coleção numérica
+print(min(numeros))
+# 1
+```
+
+Função `len()`:
+
+- Emojis podem ocupar mais de uma espaço de caractere em Strings
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+# Retorna o tamanho de uma coleção
+print(len(numeros))
+# 5
+```
+
+Função `reversed()`:
+
+```python
+numeros = [1, 2, 3, 4, 5]
+
+# Retorna um objeto iterável invertido
+print(reversed(numeros))
+# [5, 4, 3, 2, 1]
+```
+
+Função `sorted()`:
+
+```python
+numeros = [4, 2, 1, 4, 5]
+
+# Retorna um objeto ordenado de qualquer tipo de sequência iterável
+print(sorted(numeros))
+# [1, 2, 3, 4, 5]
+```
+
+Função `all()`:
+
+```python
+values = [1, "b", 0]
+
+# Retorna True se todos os elementos dentro de uma coleção são considerados True ou Truthy.
+# Retorna False, se um dos elementos da coleção é considerado False ou Falsey.
+# Só é bom usar o all quando é garantido que o conteúdo da lista seja de apenas de True ou False, 1 ou 0.
+print(all(values))
+# False
+
+# Cuidado, pois ao usar o all em uma lista vazia ele retorna True.
+print(all([]))
+# True
+```
+
+Função `any()`:
+
+```python
+values = [1, "b", 0]
+
+# Retorna True se apenas um dos valores é considerado True.
+print(any(values))
+# True
+```
+
+Função `enumerate()`:
+
+```python
+names = ["Giovanni", "Bruno", "Pedro", "Giovanni"]
+
+# Retorna em cada iteração uma tupla, contendo o index e o valor dele
+for index, nome in enumerate(names):
+    print(index, nome)
+# 0 Giovanni
+# 1 Bruno
+# 2 Pedro
+# 3 Giovanni
+```
+
+Função `zip()`:
+
+```python
+columns = ["nome", "sobrenome"]
+data = ["Bruno", "rocha"]
+
+# Junta o 1º elemento de uma coleção com o 1º elemento de outra coleção e assim sucessivamente.
+# Retorna uma tupla para cada par de valores
+print(list(zip(columns, data)))
+# [("nome", "Bruno"), ("sobrenome", "rocha")]
+
+print(dict(zip(columns, data)))
+# {"nome": "Bruno", "sobrenome": "rocha")}
+```
+
+```python
+columns = ["nome", "sobrenome"]
+data = (["Bruno", "Rocha"], ["Karla", "Soler"], ["Guido", "van Rossum"])
+
+for item in data:
+    print(dict(zip(columns, data)))
+# {"nome": "Bruno", "sobrenome": "Rocha"}
+# {"nome": "Karla", "sobrenome": "Soler"}
+# {"nome": "Guido", "sobrenome": "van Rossum"}
+
+# List Comprehension
+[dict(zip(columns, data)) for item in data]
+# [{"nome": "Bruno", "sobrenome": "Rocha"}, {"nome": "Karla", "sobrenome": "Soler"}, {"nome": "Guido", "sobrenome": "van Rossum"}]
+```
+
+#### Programação funcional
+
+- Utiliza funções como base para resolver problemas
+- Exemplos de funções voltadas para programação funcional:
+
+Função `filter()`:
+
+```python
+text = "Giovanni592Padilha97BR12"
+
+# Aplica uma função dentro de um objeto, no caso, uma String. Aonde a função retornar True, o filtro é aplicado.
+# A função aplicada em filter deve obrigatoriamente retornar um booleano, True ou False.
+# O objeto filter também é um iterável, podendo ser convertido para uma lista.
+print(list(filter(str.isdigit, text)))
+# [5, 9, 2, 9, 7, 1, 2]
+
+"".join(list(filter(str.isdigit, text)))
+# "5929712"
+```
+
+```python
+name = "Giovanni"
+
+print(list(filter(str.islower, name)))
+# ["i", "o", "v", "a", "n", "n", "i"]
+```
+
+Função `map()`:
+
+```python
+names = ["Bruno", "Rocha"]
+
+# Aplica uma função para todos os elementos dentro de uma coleção.
+# Recebe sempre o mesmo objeto de volta e do mesmo tamanho.
+print(list(map(str.upper, names)))
+# ["BRUNO", "ROCHA"]
+```
+
+```python
+numbers = ([5, 2, 3, 1, 4], [1, 2, 3], [5, 5, 6])
+
+print(list(map(sum, numbers)))
+# [15, 6, 16]
+
+print(list(map(max, numbers)))
+# [5, 3, 6]
+
+print(list(map(min, numbers)))
+# [1, 1, 5]
+```
