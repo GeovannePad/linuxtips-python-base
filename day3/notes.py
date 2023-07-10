@@ -16,7 +16,7 @@ import sys
 
 cmds = ("read", "new")
 path = os.curdir
-filepath = os.path.join(path, "day3", "notes.txt")
+filepath = os.path.join(path, "day3", "txts", "notes.txt")
 
 arguments = sys.argv[1:]
 if not arguments:

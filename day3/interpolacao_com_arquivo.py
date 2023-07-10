@@ -15,8 +15,8 @@ filename = arguments[0]
 templatename = arguments[1]
 
 path = os.curdir
-filepath = os.path.join(path, "day3", filename)
-templatepath = os.path.join(path, "day3", templatename)
+filepath = os.path.join(path, "day3", "txts", filename)
+templatepath = os.path.join(path, "day3", "txts", templatename)
 
 clientes = []
 for line in open(filepath):

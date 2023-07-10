@@ -20,7 +20,7 @@ log = logging.Logger(__name__, log_level)
 #ch.setLevel(log_level)
 
 fh = handlers.RotatingFileHandler(
-    "meulog.log", 
+    os.path.join(os.curdir, "day3", "logs", "meulog.log"), 
     maxBytes=10 ** 6, # 10 ** 6 bytes = 1 mb
     backupCount = 10,
 )

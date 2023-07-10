@@ -80,7 +80,7 @@ elif operation == "div":
     result = n1 / n2
 
 path = os.curdir
-filepath = os.path.join(path, "day3/infixcalc.log")
+filepath = os.path.join(path, "day3", "logs", "infixcalc.log")
 timestamp = datetime.now().isoformat()
 user = os.getenv("USER", "anonymous")
 

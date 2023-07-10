@@ -11,7 +11,7 @@ except Exception as e:
     print(str(e))
 
 try:
-    names = open("day3/names.txt").readlines() #FileNotFoundError
+    names = open("day3/txts/names.txt").readlines() #FileNotFoundError
 except (FileNotFoundError, ZeroDivisionError) as e:
     print(str(e))
     sys.exit(1)
