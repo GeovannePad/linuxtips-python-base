@@ -2020,3 +2020,211 @@ print(list(map(max, numbers)))
 print(list(map(min, numbers)))
 # [1, 1, 5]
 ```
+
+### Funções úteis da standard libray + envio de e-mails
+
+#### Módulo `random`
+
+- Quando está tudo em maiúsculo, é uma constante.
+- Quando a primeira letra está maiúscula e o resto em minúscula, é uma classe.
+- Quando há parênteses no final, é uma função.
+
+##### Funções úteis da lib random
+
+`random.random()`: retorna um número pseudo randômico entre 1.0 e 0.0.
+`random.randint(1, 10)`: gera um número inteiro aleatório dentro de um range, por exemplo, entre 1 e 10.
+
+`random.choice()`: Retorna um valor aleatório dentro de uma coleção
+
+```python
+colors = ["Red", "Green", "Blue"]
+
+random.choice(colors)
+# "Green"
+```
+
+`random.sample()`: retorna uma amostra aleatória de dentro de uma coleção. Podendo ser específicado o tamanho da amostra
+
+```python
+colors = ["Red", "Green", "Blue", "Yellow"]
+
+random.sample(colors, 2)
+# ["Red", "Blue"]
+```
+
+`random.shuffle()`: embaralha uma coleção de objetos, alterando diretamente o objeto
+
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7]
+
+random.shuffle(numbers)
+# [4, 1, 5, 3, 7, 6, 2]
+
+# Ao usar o sample, ele embaralha uma coleção também, mas não altera a coleção original
+random.sample(numbers, len(numbers))
+# [7, 4, 2, 6, 5, 1, 3]
+```
+
+#### Módulo `itertools`
+
+- Funcionalidades adicionais que podem ser realizadas com iteráveis
+
+##### Funções úteis da lib itertools
+
+`it.cycle(")`: repete algo em ciclos indefinidos
+
+```python
+for item in it.cycle("ABCD"):
+    print(item)
+# A
+# B
+# C
+# D
+# Loop infinito...
+```
+
+`it.repeat()`: repete qualquer coisa em um número determinado de vezes.
+
+```python
+list(it.repeat("Bruno", 5))
+# ["Bruno", "Bruno", "Bruno", "Bruno", "Bruno"]
+```
+
+`it.accumulate()`: retorna a soma de cada "expressão" até chegar no sum total. Um tipo de acumulante
+
+```python
+numbers = [1, 2, 3, 4, 5]
+
+sum(numbers)
+# 15
+
+list(it.accumulate(numbers))
+# [1, 3, 6, 10, 15]
+```
+
+`it.product()`: retorna todas as permutações possíveis de uma coleção
+
+```python
+list(it.product("ABC", repeat=2))
+#[('A', 'A'), ('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'B'), ('B', 'C'), ('C', 'A'), ('C', 'B'), ('C', 'C')]
+```
+
+`it.permutations()`: retorna agrupamentos de n elementos com todas as permutações possíveis, parecido com o `it.product()`.
+
+```python
+list(it.permutations("ABC"))
+# [('A', 'B', 'C'), ('A', 'C', 'B'), ('B', 'A', 'C'), ('B', 'C', 'A'), ('C', 'A', 'B'), ('C', 'B', 'A')]
+```
+
+#### Módulo `functools`
+
+- Funções para manipular outras funções
+
+##### Funções úteis da lib functools
+
+`ft.partial()`: cria uma função parcial em cima de outra função, com parâmetros e detalhes personalizados. Pode ser usados em métodos e funções.
+
+```python
+print("Bruno", "Rocha", sep="---")
+# Bruno---Rocha
+
+myprint = ft.partial(print, sep="---")
+
+myprint("Bruno", "Rocha")
+# Bruno---Rocha
+myprint("Giovanni", "Padilha")
+# Giovanni---Padilha
+```
+
+#### Módulo `statistics`
+
+- Módulo de estatística
+
+##### Funções úteis da lib statistics
+
+`st.mean()`: retorna a média de um conjunto de números
+`st.median()`: retorna a mediana de um conjunto de números
+
+```python
+numbers = [1, 2, 2, 5, 10, 12]
+
+st.mean(numbers)
+# 5.333333333333
+
+st.median(numbers)
+# 3.5
+```
+
+#### Módulo `uuid`
+
+- Universal Unique ID
+- Gerar nomes e id aleatórios
+
+##### Funções úteis da lib uuid
+
+Função `uuid.uuid4()`: mais usado
+
+```python
+uuid.uuid(4)
+# UUID('02efcee4-ac67-4a9a-bcda-a36fefbea049')
+
+# O primeiro bloco "02efcee4" está relacionado ao timestamp da máquina atual.
+# E cada bloco possui um significado, mas não se repete.
+```
+
+- Também existe o uuid1, uuid3 e o uuid5
+
+#### Módulo `getpass`
+
+- Uso para senhas
+
+##### Funções úteis da lib getpass
+
+Função `getpass.getpass()`: Faz com que seja um input "silencioso", sem aparecer os dados do input
+
+```python
+password = getpass.getpass("Senha: ")
+```
+
+Função `getpass.getuser()`: retorna o nome do usuário do sistema, também funciona no Windows e Linux.
+
+```python
+getpass.getuser()
+# geovannepad
+```
+
+#### Enviando e-mails usando o módulo `smtplib`
+
+- O protocolo SMTP não aceita que a primeira linha da mensagem esteja em branco.
+
+`python -m smtpd -c DebuggingServer -n localhost:8025`: criando um servidor de e-mail de debug usando o Python
+
+Abrir uma instância de servidor para enviar e-mails e depois fecha-la
+
+```python
+with smtplib.SMTP(host=SERVER, port=PORT) as server:
+    server.sendmail(FROM, TO, message.encode("utf-8"))
+```
+
+Usando MIMEText para obter um template padrão pronto e já estruturado de e-mail:
+
+```python
+from email.mime.text import MIMEText
+
+        from_ = "geovannepadilha@hotmail.com"
+        to = ", ".join([email])
+        message = MIMEText(text) # Caso a mensagem contenha formatação HTML pode alterar MIMEText(text, "html")
+        message["Subject"] = "Compre mais"
+        message["From"] = from_
+        message["To"] = to
+        
+        server.sendmail(from_, to, message.as_string())
+```
+
+Exemplo de envio real de e-mail usando o mailtrap.io:
+
+```python
+with smtplib.SMTP("smtp.mailtrap.io", 2525) as server:
+    server.login(user="83f1618af77272", password="ff77c56ae6ef22")
+    server.sendmail(FROM, TO, message.as_string())
+```
