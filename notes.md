@@ -2228,3 +2228,22 @@ with smtplib.SMTP("smtp.mailtrap.io", 2525) as server:
     server.login(user="83f1618af77272", password="ff77c56ae6ef22")
     server.sendmail(FROM, TO, message.as_string())
 ```
+
+### Escrevendo sua primeira função - aplicando fórmula matemática
+
+- Uma função na matemática é uma estrutura/fórmula que recebe um conjunto de dados, um domínio, o processo dos dados é realizado através da fórmula matemática e o resultado será o contra domínio.
+- Uma função é uma variável, um objeto.
+- Toda função em Python tem um retorno, caso não seja um específico, sempre retornará None.
+- Uma função deve sempre resolver um único problema, caso haja mais de um problema, deverá ser criado uma função para cada problema.
+- Uma função pode não retornar nada, e elas são chamadas de Procedimentos / Procedures.
+- Uma função que retorna algo é chamada justamente de Função.
+- Possível chamar outras funções ou procedimentos dentro de outra função.
+
+__Observação:__ para números menores que 256, o Python tenta reutilizar e não atribuir para um novo espaço de memória.
+
+Definindo uma função:
+
+```python
+def function_name(parameters):
+    # Code
+```
