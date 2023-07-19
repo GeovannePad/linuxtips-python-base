@@ -17,6 +17,7 @@
 ### Console
 
 `python -c "comando"`: executa comandos Python no terminal
+`ipython -i script.py`: rode o programa e um terminal fica aberto no final, com todos os objetos criados no programa disponíveis para uso.
 `python -m site`: módulo que mostra como o Python que está sendo usado está instalado. Para executar outros módulos: `python -m nome_do_modulo`.
 `python --version`: mostra versão instalada do Python
 `python -VV`: mostra a versão instalada e o momento em que o Python foi compilado.
@@ -2246,4 +2247,178 @@ Definindo uma função:
 ```python
 def function_name(parameters):
     # Code
+```
+
+### Anatomia de uma Função
+
+#### Por que usar funções?
+
+- Código mais organizado.
+- Dividir em módulos separados.
+- Colocar um ambiente isolado dentro de uma função, podendo organizar.
+- Capaz de parametrizar as execuções da melhor forma.
+
+Composição de funções: utilizar funções dentro de outras funções.
+
+```python
+names = [
+    "Bruno", 
+    "João", 
+    "Bernardo", 
+    "Barbara", 
+    "Brian",
+]
+
+def starts_with_b(text):
+    #return text[0].lower() == "b"
+    return text.startswith(("B", "b"))
+
+print(*list(filter(starts_with_b, names)))
+```
+
+#### Anatomia de uma função
+
+##### Definição/Atribuição
+
+- Formada por alguns elementos, que são, a sua definição ou atribuição.
+- A função precisa ser definida.
+- Usa a palavra `def` para definir a função.
+
+##### Assinatura
+
+- Tudo que tiver depois do parênteses, até os dois pontos.
+- Como parâmetros ou tipos.
+
+##### Documentação/Doc String
+
+- Descreve o que a função irá fazer.
+- Documentação da função.
+- Possível documentar os parâmetros da função.
+- Está caindo em desuso, com os atuais type hints
+
+```python
+def function_name(params):
+    """ Esta função faz algo com a, b e c.
+
+    Use esta função quando quiser a + b + c
+    Quando o parâmetro a tiver o valor 10 vai acontecer x.
+
+    >>> nome_da_funcao(1, 2, 3)
+    """
+```
+
+##### Type Hints
+
+- A partir do Python 3.3, o tipo dos parâmetros é passado pela assinatura.
+- Tendem a ficar complexos.
+
+```python
+def function_name(a: int, b: int, c: int) -> int:
+    """ Esta função faz algo com a, b e c.
+
+    Use esta função quando quiser a + b + c
+    Quando o parâmetro a tiver o valor 10 vai acontecer x.
+
+    >>> nome_da_funcao(1, 2, 3)
+    """
+    result = a + b + c
+    return result
+```
+
+`funcion_name.__doc__`: documentação da função.
+`function_name.__code__`: código compilado da função.
+`function_name.__annotations__`: tipo dos parâmetros e return.
+
+##### Forma de passar argumentos
+
+###### Posicional
+
+- Parâmetro é o nome de uma variável ao ser recebida em uma função, sem saber o valor exato.
+- Parâmetro é algo que não se sabe o valor.
+- Argumento é algo que se sabe o valor.
+- Usado quando se tem pouco parâmetros.
+
+Exemplo:
+
+```python
+# Passagem de argumentos posicionais
+value = function_name(1, 2, 3)
+```
+
+###### Nomeados
+
+- Possível inverter a passagem de parâmetros.
+- Melhor forma de passagem de parâmetros.
+
+Exemplo:
+
+```python
+# Passagem de argumentos nomeados
+value = function_name(a=1, b=2, c=3)
+value = function_name(c=1, a=2, c=3)
+```
+
+###### Mista
+
+- Forma de passagem de ambos os tipos.
+- Primeiro ele preenche os posicionais e depois os nomeados.
+
+Exemplo:
+
+```python
+value = function_name(1, c=2, b=3)
+```
+
+###### Função com muitos argumentos
+
+- Sintaxe para passagem de muitos argumentos
+
+Exemplo:
+
+```python
+value = function_name(
+    a=1,
+    b=2,
+    c=3,
+)
+```
+
+##### Valor de retorno
+
+###### Tupla como valor de retorno
+
+- Desempacotar direto na passagem de parâmetros.
+
+Exemplo:
+
+```python
+a, b, c = function_name(1, 2, 3)
+# a = 1
+# b = 4
+# c = 6
+
+# Capturar apenas o primeiro valor
+a, *_ = function_name(1, 2, 3)
+# a = 1
+```
+
+#### Passagem de argumentos com desempacotamento
+
+- Passa parâmetros utilizando desempacotamento.
+- Pode ser utilizado tuplas ou dicionários.
+- Nesse método, os argumentos sempre serão passados de forma posicional.
+- Um único asterisco indica o desempacotamento de uma sequência de valores únicos e os dois asteriscos desempacota sequência de hashmap ou dicionários, que possuem chave e valor.
+
+Exemplo com tupla:
+
+```python
+args = (20, 30) # Tuple
+print(sum(*args)) 
+```
+
+Exemplo com dicionário:
+
+```python
+args = {"n2": 90, "n1": 100}
+print(sum(**args))
 ```
