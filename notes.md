@@ -533,7 +533,7 @@ conjunto.add(elemento)
 
 ##### Operações com Conjuntos
 
-![Operações com Conjuntos](images/operacoes_conjuntos.webp)
+![Operações com Conjuntos](images/set_operations.webp)
 
 ###### União
 
@@ -1194,7 +1194,7 @@ filepath.read_text()
 
 #### Guia de referência
 
-![Guia de referência](images/guia-referencia-arquivos.png)
+![Guia de referência](images/file_reference_guide.png)
 
 ### Exercício - criando um bloco de anotações
 
