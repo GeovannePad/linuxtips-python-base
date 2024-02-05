@@ -4,85 +4,85 @@
 
 ### Linux
 
-`cat arquivo`: mostra todo o conteúdo em forma de texto do arquivo em questão.
-`tail -f arquivo`: fica "observando" o arquivo, mostrando alterações em tempo real.
-`mkdir pasta`: cria uma pasta
-`cd pasta`: acessa uma pasta
-`pwd`: mostra o caminho da pasta atual
-`touch arquivo`: cria um arquivo em branco
-`ls`: listar arquivos
-`echo "Texto" >> arquivo`: escreve em um arquivo. Usando ">" ele abre no modo de "write" substituindo todo o conteúdo do arquivo ao escrever. Usando ">>" ele abre no modo de "append" e não substitui o conteúdo já colocado no arquivo, apenas adiciona ao final.
-`cat arquivo`: ler o conteúdo de um arquivo
+- `cat arquivo`: mostra todo o conteúdo em forma de texto do arquivo em questão.
+- `tail -f arquivo`: fica "observando" o arquivo, mostrando alterações em tempo real.
+- `mkdir pasta`: cria uma pasta
+- `cd pasta`: acessa uma pasta
+- `pwd`: mostra o caminho da pasta atual
+- `touch arquivo`: cria um arquivo em branco
+- `ls`: listar arquivos
+- `echo "Texto" >> arquivo`: escreve em um arquivo. Usando ">" ele abre no modo de "write" substituindo todo o conteúdo do arquivo ao escrever. Usando ">>" ele abre no modo de "append" e não substitui o conteúdo já colocado no arquivo, apenas adiciona ao final.
+- `cat arquivo`: ler o conteúdo de um arquivo
 
 ### Console
 
-`python -c "comando"`: executa comandos Python no terminal
-`ipython -i script.py`: rode o programa e um terminal fica aberto no final, com todos os objetos criados no programa disponíveis para uso.
-`python -m site`: módulo que mostra como o Python que está sendo usado está instalado. Para executar outros módulos: `python -m nome_do_modulo`.
-`python --version`: mostra versão instalada do Python
-`python -VV`: mostra a versão instalada e o momento em que o Python foi compilado.
-`python --help`: mostra a guia de ajuda.
-`python`: terminal interativo do Python (interpretador).
-`python -m turtledemo`: pacote gráfico com exemplos
-`which python`: mostra o caminho do python que o sistema está usando.
-`mv nome_arquivo nome_novo`: renomeia um arquivo
-`env`: mostra a lista de todas as variáveis do ambiente.
-`env | grep variavel_ambiente`: grep é uma ferramenta de filtragem do linux.
-`export variavel_ambiente`: altera o valor de uma variável de ambiente.
-`unset variavel_ambiente`: exclui uma variável de ambiente.
-`variavel_ambiente script`: força um script a atualizar um determinado valor de uma determinada variável de ambiente.
-`python3.11 -m venv nome_ambiente_virtual`: comando para criar um ambiente virtual.
-`source .venv/bin/activate`: comando para ativar um ambiente virtual no Linux bash.
-`deactivate`: comando para sair do ambiente virtual
+- `python -c "comando"`: executa comandos Python no terminal
+- `ipython -i script.py`: rode o programa e um terminal fica aberto no final, com todos os objetos criados no programa disponíveis para uso.
+- `python -m site`: módulo que mostra como o Python que está sendo usado está instalado. Para executar outros módulos: `python -m nome_do_modulo`.
+- `python --version`: mostra versão instalada do Python
+- `python -VV`: mostra a versão instalada e o momento em que o Python foi compilado.
+- `python --help`: mostra a guia de ajuda.
+- `python`: terminal interativo do Python (interpretador).
+- `python -m turtledemo`: pacote gráfico com exemplos
+- `which python`: mostra o caminho do python que o sistema está usando.
+- `mv nome_arquivo nome_novo`: renomeia um arquivo
+- `env`: mostra a lista de todas as variáveis do ambiente.
+- `env | grep variavel_ambiente`: grep é uma ferramenta de filtragem do linux.
+- `export variavel_ambiente`: altera o valor de uma variável de ambiente.
+- `unset variavel_ambiente`: exclui uma variável de ambiente.
+- `variavel_ambiente script`: força um script a atualizar um determinado valor de uma determinada variável de ambiente.
+- `python3.11 -m venv nome_ambiente_virtual`: comando para criar um ambiente virtual.
+- `source .venv/bin/activate`: comando para ativar um ambiente virtual no Linux bash.
+- `deactivate`: comando para sair do ambiente virtual
 
 ### Funções Python
 
-`bin(numero_inteiro)`: função que mostra a versão binária de determinado número inteiro.
-`chr(numero_inteiro)`: função que retorna um caractere referente a um número inteiro.
-`id(variavel)`: função que retorna a posição na memória RAM de uma determinada variável.
-`type(variavel)`: função que retorna o tipo de dado de uma variável.
-`int(valor)`: força a um valor a ser do tipo inteiro.
-`dir(tipo_de_dado)`: função que retorna a implementação do objeto, tudo que é possível ser feito com objetido de um determinado tipo de dado.
-`str(variavel)`: converte uma variável para String.
+- `bin(numero_inteiro)`: função que mostra a versão binária de determinado número inteiro.
+- `chr(numero_inteiro)`: função que retorna um caractere referente a um número inteiro.
+- `id(variavel)`: função que retorna a posição na memória RAM de uma determinada variável.
+- `type(variavel)`: função que retorna o tipo de dado de uma variável.
+- `int(valor)`: força a um valor a ser do tipo inteiro.
+- `dir(tipo_de_dado)`: função que retorna a implementação do objeto, tudo que é possível ser feito com objetido de um determinado tipo de dado.
+- `str(variavel)`: converte uma variável para String.
 
-`variavel.encode("utf-8")`: retorna um objeto do tipo bytes, onde separado por cada "\" terá um byte formando uma série de bytes que representa um caractere Unicode.
-`variavel.decode()`: converte a série de bytes para um caractere Unicode.
-`bytes(variavel, "utf-8")`: converte um texto para uma sequência de bytes usando uma tabela específica para buscar o texto.
+- `variavel.encode("utf-8")`: retorna um objeto do tipo bytes, onde separado por cada "\" terá um byte formando uma série de bytes que representa um caractere Unicode.
+- `variavel.decode()`: converte a série de bytes para um caractere Unicode.
+- `bytes(variavel, "utf-8")`: converte um texto para uma sequência de bytes usando uma tabela específica para buscar o texto.
 
-`len()`: retorna a quantidade de itens dentro de uma sequência materializadas. Método `__len__()`.
-`next()`: retorna o próximo item de um objeto composto.
-`upper()`: transforma todos os caracteres em maiúsculos.
-`lower()`: transforma todos os caracteres em minúsculos.
-`capitalize()`: transforma a primeira letra da String em maiúscula.
-`title()`: transforma todas as primeiras letras de cada palavra da String em maiúscula.
-`split()`: divide um texto em uma lista separadas onde cada espaço é uma palavra.
-`startswith("letra")`: verifica se o texto começa com determinada letra, retorna true ou false.
-`endswith("letra")`: verifica se determina letra está no final do text, retorna true ou false.
-`sorted()`: retorna a ordenação de uma string baseada em uma tabela ASCII.
-`reversed()`: retorna uma string ao contrário.
-`print("\U0001F43C")`: imprime um emoji com base no seu código Unicode.
-`print("\N{panda face})`: imprime um emojo com base no seu nome na tabela Unicode.
+- `len()`: retorna a quantidade de itens dentro de uma sequência materializadas. Método `__len__()`.
+- `next()`: retorna o próximo item de um objeto composto.
+- `upper()`: transforma todos os caracteres em maiúsculos.
+- `lower()`: transforma todos os caracteres em minúsculos.
+- `capitalize()`: transforma a primeira letra da String em maiúscula.
+- `title()`: transforma todas as primeiras letras de cada palavra da String em maiúscula.
+- `split()`: divide um texto em uma lista separadas onde cada espaço é uma palavra.
+- `startswith("letra")`: verifica se o texto começa com determinada letra, retorna true ou false.
+- `endswith("letra")`: verifica se determina letra está no final do text, retorna true ou false.
+- `sorted()`: retorna a ordenação de uma string baseada em uma tabela ASCII.
+- `reversed()`: retorna uma string ao contrário.
+- `print("\U0001F43C")`: imprime um emoji com base no seu código Unicode.
+- `print("\N{panda face})`: imprime um emojo com base no seu nome na tabela Unicode.
 
-`tuple.count("valor")`: informa a quantidade que tem dentro de uma tupla de um determinado valor.
+- `tuple.count("valor")`: informa a quantidade que tem dentro de uma tupla de um determinado valor.
 
-`list.append("Valor")`: adiciona um elemento ao final da lista.
-`list.insert(posição, "Valor")`; adiciona um elemento a uma posição específica.
-`list.remove("Valor")`: remove um elemento da lista, caso haja mais de um valor igual, ele irá remover o primeiro valor.
-`list.pop()`: remove elemento por elemento a partir do fim.
-`list1.extend(list2)`: extende/adiciona uma lista a outra.
+- `list.append("Valor")`: adiciona um elemento ao final da lista.
+- `list.insert(posição, "Valor")`; adiciona um elemento a uma posição específica.
+- `list.remove("Valor")`: remove um elemento da lista, caso haja mais de um valor igual, ele irá remover o primeiro valor.
+- `list.pop()`: remove elemento por elemento a partir do fim.
+- `list1.extend(list2)`: extende/adiciona uma lista a outra.
 
 ### Métodos Dunder e Públicos
 
-`__add__()`: implementa o protocolo de adição, sendo um objeto Aditivel. Exemplo: `numero.__add__(1) = numero + 1`.
-`__sub__()`: implementa o protocolo de subtração, sendo um objeto redutivel. Exemplo: `numero.__sub__(1) = numero - 1`.
-`__mul__()`: implementa o protocolo de multiplicação, sendo um objeto multiplicável. Exemplo: `numero.__mul__(2) = numero * 2`.
-`__eq__()`: implementa o protocolo de equalidade. Exemplo: `numero.__eq__(2) = numero == 2`.
-`__getitem__()`: habilidade de ser fatiado.
-`__contains__`: verifica se possui determinado valor de uma lista ou tupla. Em alguns casos ele pode ser lento. Exemplo: `8 in numeros`
+- `__add__()`: implementa o protocolo de adição, sendo um objeto Aditivel. Exemplo: `numero.__add__(1) = numero + 1`.
+- `__sub__()`: implementa o protocolo de subtração, sendo um objeto redutivel. Exemplo: `numero.__sub__(1) = numero - 1`.
+- `__mul__()`: implementa o protocolo de multiplicação, sendo um objeto multiplicável. Exemplo: `numero.__mul__(2) = numero * 2`.
+- `__eq__()`: implementa o protocolo de equalidade. Exemplo: `numero.__eq__(2) = numero == 2`.
+- `__getitem__()`: habilidade de ser fatiado.
+- `__contains__`: verifica se possui determinado valor de uma lista ou tupla. Em alguns casos ele pode ser lento. Exemplo: `8 in numeros`
 
 ### iPython
 
-`%time função`: comando do iPython que demonstra o uso do CPU para executar determinada função.
+- `%time função`: comando do iPython que demonstra o uso do CPU para executar determinada função.
 
 ## Introdução a programação e ao Python - Day 1
 
